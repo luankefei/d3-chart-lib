@@ -12,16 +12,20 @@ function worldMap(svg, data) {
     this.height = null
     this.svg = svg
 
-    var base = this
+    this.events = {}
+
+    var that = this
 
     this.draw = function() {
 
         var style = getComputedStyle(this.svg)
+        // 获取伪类样式
+        var hoverStyle = getComputedStyle(this.svg, ':hover')
 
         // TODO: 250和130是试出来的magic number
         var projection = d3.geo.equirectangular()
             .scale(250)
-            .translate([base.width / 2, base.height / 2 - 130])
+            .translate([that.width / 2, that.height / 2 - 130])
             .precision(.1);
 
         var path = d3.geo.path()
@@ -29,14 +33,14 @@ function worldMap(svg, data) {
 
         var graticule = d3.geo.graticule()
 
-        var svg = d3.select(base.svg)
-        var world = base.data
+        var svg = d3.select(that.svg)
+        var world = that.data
 
         svg.attr('version', '1.1')
         svg.attr('xmlns', 'http://www.w3.org/1999/svg')
 
-        svg.attr('width', base.width)
-            .attr('height', base.height)
+        svg.attr('width', that.width)
+            .attr('height', that.height)
 
         if (world !== null) {
 
@@ -55,16 +59,34 @@ function worldMap(svg, data) {
 
                     return d.id
                 })
+                .on('mouseover', function() {
+
+                    events.mouseover()
+
+
+                    // var obj = d3.select(this)
+
+                    // obj.style('fill', hoverStyle.fill)
+                })
+                .on('mouseout', function() {
+
+                    events.mouseout()
+                    // var obj = d3.select(this)
+
+                    // obj.style('fill', 'transparent')
+                })
 
             svg.insert('path', '.graticule')
                 .datum(topojson.mesh(world, world.objects.countries, function(a, b) {
                     return a !== b;
                 }))
                 .attr('class', 'boundary')
+                .style('stroke', style.stroke)
+                .style('stroke-width', style.strokeWidth)
                 .attr('d', path)
 
         }
 
-        d3.select(self.frameElement).style('height', base.height + 'px')   
+        d3.select(self.frameElement).style('height', that.height + 'px')   
     }
 }

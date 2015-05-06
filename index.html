@@ -2,34 +2,70 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <title>Chart Demo</title>
-    
+    <link rel="stylesheet" href="css/index.css">
 
     <style>
     
     body {
-        /*background: #153566;*/
+        background: #153566;
     }
 
     #map {
-        width: 1400px;
-        height: 800px;
+        width: 1900px;
+        height: 1000px;
 
         fill: transparent;
         stroke: #85aecc;
         stroke-width: 1px;
         opacity: 0.8;
+        padding-top: 50px;
+    }
+
+    #bar {
+        width: 1400px;
+        height: 800px;
+
+        fill: #85aecc;
+        stroke: #fff;
+        stroke-width: 1px;
+        opacity: 0.8;
+
+        position: absolute;
+        top: 0px;
+        left: 250px;
+        /*top: 100px;*/
     }
 
     </style>
 
 </head>
 <body>
+
+    <header>
+        <img alt="" src="images/logo.jpg">
+        <h1>UNMET NEEDS ANALYSIS STUDY VISUALIZATION REPORT</h1>
+        
+        <div class="tab">
+            <button class="button" id="country">Country Map</button>
+            <button class="button selected" id="global">Globle Map</button>
+        </div>
+    </header>
+
     
     <chart id="map" data-name="worldMap">
         <data src="data/world.json"></data>
-        <interactive target="" data-type="line(2)"></interactive>
     </chart>
+
+    <chart id="bar" data-name="lengthBar">
+        <data>[0, 10, 5, 20, 35, 15, 25, 23, 28, 33, 24, 14, 19]</data>
+        <interactive data-target="#map > .country" data-type="line(2)"></interactive>
+    </chart>
+
+    <!--<my-svg></my-svg>-->
+
+    <footer>GLOBLE NUMET NEEDS</footer>
     
     <script src="js/main.js"></script>
     <script src="js/module.js"></script>
@@ -47,13 +83,35 @@
         .then('js/chart.js')
         .then('js/dom.js')
         .then('js/core.js')
+        .then('js/interactive.js')
         .then('js/extend.js')
         .end(function() {
 
-            var chart = document.getElementById('map')
+            var map = document.getElementById('map')
+            var bar = document.getElementById('bar')
 
-            T.init(chart)
+            T.init(map)
+            T.init(bar)
+
+            map.events.mouseover = function() {
+                console.log('over')
+            }
         })
+
+    //  var box = document.register('my-svg', {
+
+    //     prototype: Object.create(HTMLElement.prototype, {
+    //         createdCallback: {
+    //             value: function() {
+
+    //                 var shadow = this.createShadowRoot()
+
+    //                 shadow.innerHTML = '<svg version="1.1" xmlns="http://www.w3.org/1999/svg"></svg>'
+    //             }
+    //         }
+    //     })
+    // })
+
 
     </script>
     

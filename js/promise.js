@@ -8,6 +8,14 @@ define('promise', ['http'], function(http) {
 
     var promise = {
 
+        // do: function(func) {
+
+        //     func && func()
+
+        //     return promise
+        // },
+
+
         defer: function(url) {
 
             current = url
@@ -53,11 +61,6 @@ define('promise', ['http'], function(http) {
 
     return promise
 })
-
-
-
-
-
 
 
 

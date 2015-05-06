@@ -6,6 +6,7 @@ define('core', [], function() {
 
     var dom = T.use('dom')
     var chart = T.use('chart')
+    var interactive = T.use('interactive')
 
     var core = {
 
@@ -13,13 +14,13 @@ define('core', [], function() {
 
             var data = dom.getData(ele, function(data) {
 
-                //var interactive = getAct(ele)
-            
                 var svg = dom.replaceDom(ele)
                 var name = ele.getAttribute('data-name')
-                
+                var act = dom.getInteractive(ele)
+
+                interactive.init(act)
+
                 chart.draw(name, svg, data)
-                //initChart(svg, data)
             })
         }
     }

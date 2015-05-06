@@ -14,6 +14,7 @@ define('dom', [], function() {
                 clas = ele.getAttribute('class'),
                 type = ele.getAttribute('data-type')
 
+
             var newEle = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
 
             newEle.setAttribute('id', id)
@@ -35,7 +36,7 @@ define('dom', [], function() {
 
             if (src == null) {
 
-                data = eleData.innerHTML
+                data = eval(eleData.innerHTML)
 
                 callback && callback(data)
 
@@ -46,6 +47,25 @@ define('dom', [], function() {
                     callback && callback(data)
                 })  
             }
+        },
+
+        getInteractive: function(ele) {
+
+            var eleAct = ele.getElementsByTagName('interactive')[0]
+            var act = {}
+
+            if (typeof eleAct === 'undefined') {
+
+                act = null
+            
+            } else {
+
+                act.target = eleAct.getAttribute('data-target'),
+                act.type = eleAct.getAttribute('data-type')
+
+            }
+
+            return act
         }
     }
 
