@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chart Demo</title>
+    
+
+    <style>
+    
+    body {
+        /*background: #153566;*/
+    }
+
+    #map {
+        width: 1400px;
+        height: 800px;
+
+        fill: transparent;
+        stroke: #85aecc;
+        stroke-width: 1px;
+        opacity: 0.8;
+    }
+
+    </style>
+
+</head>
+<body>
+    
+    <chart id="map" data-name="worldMap">
+        <data src="data/world.json"></data>
+        <interactive target="" data-type="line(2)"></interactive>
+    </chart>
+    
+    <script src="js/main.js"></script>
+    <script src="js/module.js"></script>
+    <script src="js/http.js"></script>
+    <script src="js/promise.js"></script>
+
+    <script>
+
+    var promise = window.use('promise')
+
+    promise.defer('js/lib/d3.v3.min.js')
+        .then('js/lib/d3.geo.projection.v0.min.js')
+        .then('js/lib/topojson.v1.min.js')
+        .then('js/lib/queue.v1.min.js')
+        .then('js/chart.js')
+        .then('js/dom.js')
+        .then('js/core.js')
+        .then('js/extend.js')
+        .end(function() {
+
+            var chart = document.getElementById('map')
+
+            T.init(chart)
+        })
+
+    </script>
+    
+</body>
+</html>
