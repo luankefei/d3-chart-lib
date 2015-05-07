@@ -10,7 +10,9 @@ function worldMap(svg, data) {
     this.data = data
     this.width = null
     this.height = null
+    this.id = null
     this.svg = svg
+
 
     this.events = {}
 
@@ -51,6 +53,7 @@ function worldMap(svg, data) {
                 .data(countries)
                 .enter()
                 .insert('path', '.graticule')
+                .attr('class', 'country')
                 .attr('d', path)
                 .style('fill', style.fill)
                 .style('stroke', style.stroke)
@@ -59,21 +62,23 @@ function worldMap(svg, data) {
 
                     return d.id
                 })
+                .on('click', function(d, i) {
+
+                    var self = T.find('#' + that.id)
+
+                    self.country.click && self.country.click(d, i, this)
+                })
                 .on('mouseover', function() {
 
-                    events.mouseover()
+                    var self = T.find('#' + that.id)
 
-
-                    // var obj = d3.select(this)
-
-                    // obj.style('fill', hoverStyle.fill)
+                    self.country.mouseover && self.country.mouseover(d, i, this)
                 })
                 .on('mouseout', function() {
 
-                    events.mouseout()
-                    // var obj = d3.select(this)
+                    var self = T.find('#' + that.id)
 
-                    // obj.style('fill', 'transparent')
+                    self.country.mouseout && self.country.mouseout(d, i, this)
                 })
 
             svg.insert('path', '.graticule')

@@ -24,8 +24,6 @@ define('core', [], function() {
             })
         }
     }
-
-    T.init = core.init
     
     return core
 })

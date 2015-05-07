@@ -20,16 +20,25 @@ define('chart', [], function() {
 
                 var style = getComputedStyle(svg)
                 
-                // todo: 去掉eval
-                var map = eval('new ' + name + '(svg, data)')
+                // TODO: 去掉eval
+                var c = eval('new ' + name + '(svg, data)')
+                // selector将作为chartMap中的key值，暂时使用用户定义的id
+                var id = svg.getAttribute('id')
+                var self = T.find('#' + id)
 
-                map.width = style.width
-                map.height = style.height
+                self.chart = {
+                    name: name,
+                    obj: c
+                }
 
-                map.width = map.width.substring(0, map.width.length - 2)
-                map.height = map.height.substring(0, map.height.length - 2)
+                c.id = id
+                c.width = style.width
+                c.height = style.height
 
-                map.draw()
+                c.width = c.width.substring(0, c.width.length - 2)
+                c.height = c.height.substring(0, c.height.length - 2)
+
+                c.draw()
             })
         }
     }

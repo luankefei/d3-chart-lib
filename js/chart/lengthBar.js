@@ -1,7 +1,7 @@
 /**
  * @description 条形图的绘制
  * @dete 2015.04.28
- * @version 0.1
+ * @version 0.0.1
  */
 function lengthBar(svg, data) {
 
@@ -12,12 +12,10 @@ function lengthBar(svg, data) {
 
     var that = this
 
-    this.draw = function() {
+    this.draw = function(self) {
 
         var svgClientRect = that.svg.getBoundingClientRect()
         var svg = d3.select(that.svg)
-
-        console.log(svgClientRect)
 
         svg.attr('version', '1.1')
         svg.attr('xmlns', 'http://www.w3.org/1999/svg')

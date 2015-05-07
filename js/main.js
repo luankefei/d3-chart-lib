@@ -1,25 +1,36 @@
-
-
+/**
+ * @name  main.js
+ * @description  此文件描述结构，提供extend等基础api
+ * @date  2015.05.07
+ * @version  0.0.2
+ */
 (function(window, undefined) {
 
     'use strict'
 
     var TE  = (function() {
         
-        var TE = function() {
+        var TE = function() {}
 
-        }
+        // 用于关联selector与图表对象
+        var chartMap = []
 
-        // 一堆私有属性和方法
-        var load = function() {
-            console.log('ddd')
+        // find用于读取chartMap中的对象
+        var find = function(selector) {
+
+            var c = chartMap[selector]
+
+            if (typeof c === 'undefined') {
+
+                c = chartMap[selector] = {}
+                
+            }
+
+            return c
         }
 
         TE.fn = TE.prototype = {
             constructor: TE,
-            init: function() {
-
-            }
             // 一堆原型属性和方法
         }
 
@@ -30,6 +41,10 @@
                 TE[key] = arguments[0][key]
             }
         }
+
+        TE.extend({
+            find: find
+        })
 
         return TE
     })()

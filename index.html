@@ -9,14 +9,14 @@
     <style>
     
     body {
-        background: #153566;
+        /*background: #153566;*/
     }
 
     #map {
         width: 1900px;
         height: 1000px;
 
-        fill: transparent;
+        fill: #153566;
         stroke: #85aecc;
         stroke-width: 1px;
         opacity: 0.8;
@@ -93,27 +93,18 @@
             T.init(map)
             T.init(bar)
 
-            map.events.mouseover = function() {
-                console.log('over')
+            map = T.find('#map')
+
+            // 以下事件均为延迟绑定
+            map.country = {}
+            map.country.click = function(d, i, obj) {                
+
+                obj = d3.select(obj)
+                obj.style('fill', 'red')
             }
         })
-
-    //  var box = document.register('my-svg', {
-
-    //     prototype: Object.create(HTMLElement.prototype, {
-    //         createdCallback: {
-    //             value: function() {
-
-    //                 var shadow = this.createShadowRoot()
-
-    //                 shadow.innerHTML = '<svg version="1.1" xmlns="http://www.w3.org/1999/svg"></svg>'
-    //             }
-    //         }
-    //     })
-    // })
-
 
     </script>
     
 </body>
-</html>
+</html> 
