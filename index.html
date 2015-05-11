@@ -63,46 +63,42 @@
         <interactive data-target="#map > .country" data-type="line(2)"></interactive>
     </chart>
 
-    <!--<my-svg></my-svg>-->
-
     <footer>GLOBLE NUMET NEEDS</footer>
     
+
+    <script src="js/lib/d3.v3.min.js"></script>
+    <script src="js/lib/d3.geo.projection.v0.min.js"></script>
+    <script src="js/lib/topojson.v1.min.js"></script>
+    <script src="js/lib/queue.v1.min.js"></script>
+
     <script src="js/main.js"></script>
     <script src="js/module.js"></script>
     <script src="js/http.js"></script>
-    <script src="js/promise.js"></script>
+    <!--<script src="js/promise.js"></script>-->
+
+    <script src="js/chart.js"></script>
+    <script src="js/dom.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/interactive.js"></script>
+    <script src="js/extend.js"></script>
 
     <script>
 
-    var promise = window.use('promise')
+    var map = document.getElementById('map')
+    var bar = document.getElementById('bar')
 
-    promise.defer('js/lib/d3.v3.min.js')
-        .then('js/lib/d3.geo.projection.v0.min.js')
-        .then('js/lib/topojson.v1.min.js')
-        .then('js/lib/queue.v1.min.js')
-        .then('js/chart.js')
-        .then('js/dom.js')
-        .then('js/core.js')
-        .then('js/interactive.js')
-        .then('js/extend.js')
-        .end(function() {
+    T.init(map)
+    T.init(bar)
 
-            var map = document.getElementById('map')
-            var bar = document.getElementById('bar')
+    map = T.find('#map')
 
-            T.init(map)
-            T.init(bar)
+    // 以下事件均为延迟绑定
+    map.country = {}
+    map.country.click = function(d, i, obj) {                
 
-            map = T.find('#map')
-
-            // 以下事件均为延迟绑定
-            map.country = {}
-            map.country.click = function(d, i, obj) {                
-
-                obj = d3.select(obj)
-                obj.style('fill', 'red')
-            }
-        })
+        obj = d3.select(obj)
+        obj.style('fill', 'red')
+    }
 
     </script>
     

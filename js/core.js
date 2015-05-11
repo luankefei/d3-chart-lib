@@ -2,7 +2,7 @@
 'use strict'
 
 
-define('core', [], function() {
+TE.define('core', [], function() {
 
     var dom = T.use('dom')
     var chart = T.use('chart')

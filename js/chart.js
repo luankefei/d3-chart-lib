@@ -6,7 +6,7 @@
 
 'use strict'
 
-define('chart', [], function() {
+TE.define('chart', [], function() {
 
     var http = T.use('http')
 

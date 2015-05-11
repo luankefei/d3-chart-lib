@@ -2,7 +2,7 @@
 'use strict'
 
 
-define('http', [], function() {
+TE.define('http', [], function() {
 
     var http = {
 

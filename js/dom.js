@@ -2,7 +2,7 @@
 'use strict'
 
 
-define('dom', [], function() {
+TE.define('dom', [], function() {
 
     var http = T.use('http')
 
@@ -13,7 +13,6 @@ define('dom', [], function() {
             var id = ele.getAttribute('id'),
                 clas = ele.getAttribute('class'),
                 type = ele.getAttribute('data-type')
-
 
             var newEle = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
 

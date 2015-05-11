@@ -7,7 +7,7 @@
  * @dete 2015.04.28
  * @version  0.0.1
  */
-define('interactive', [], function() {
+TE.define('interactive', [], function() {
 
 
 
