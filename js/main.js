@@ -1,27 +1,25 @@
 /**
  * @name  main.js
- * @description  此文件描述结构，提供extend等基础api
+ * @description  此文件是种子模块，描述整体结构，提供extend等基础api
  * @date  2015.05.07
  * @version  0.0.2
  */
-(function(window, undefined) {
+!function(global, DOC) {
 
     'use strict'
 
-    // 用于关联selector与图表对象
-    var chartMap = []
+    var version = 1                 // 版本号
+    var chartMap = []               // 用于关联selector与图表对象
 
-    
-    var moduleMap = {}
-    var fileMap = {}
 
-    var noop = function () {}
+    var moduleMap = {}              // 用于amd模块
+    var fileMap = {}                // 用于amd模块
+
+    var noop = function () {}       // 用于amd模块
 
     var TE  = (function() {
         
         var TE = {}
-
-        
 
         TE.fn = TE.prototype = {
             constructor: TE,
@@ -42,7 +40,7 @@
     TE.extend({
 
         // find用于读取chartMap中的对象
-        find: TE.fn.find = function(selector) {
+        find: function(selector) {
 
             var c = chartMap[selector]
 
@@ -146,7 +144,13 @@
     })
 
 
-    window.TE = window.T = TE
+    global.TE = global.T = TE
 
-})(window)
+}
+(window, window.document)
+
+
+/**
+ * 2015.5.11 整合了原有的module.js模块，使框架结构更清晰
+ */
 

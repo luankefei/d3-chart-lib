@@ -9,8 +9,6 @@
  */
 TE.define('interactive', [], function() {
 
-
-
     var interactive = {
 
         init: function(act) {
