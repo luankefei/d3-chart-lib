@@ -22,5 +22,4 @@ TE.define('interactive', [], function() {
     }
 
     return interactive
-
 })
