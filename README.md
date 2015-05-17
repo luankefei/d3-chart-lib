@@ -90,13 +90,17 @@ map.country.click = function(d, i, obj) {
 四、扩展
 
 1.增加图表。将js文件放置在src/js/chart下即可。
+
 2.增加组件。将js文件放置在src/js/compoent下即可。
+
 3.增加事件。将js文件放置在src/js/events下即可。
 
 五、与图易的结合
 
 1.生成div
+
 2.生成图表模板
+
 3.调用组件初始化函数
 
 done!
