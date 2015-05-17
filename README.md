@@ -40,6 +40,7 @@ tooltip提示气泡
 
 ##关于组件库的设计
 
+
 一、 模块加载
 
 模块化的设计，目的是减少全局污染、隐藏私有对象和多人协同开发。
@@ -49,6 +50,7 @@ tooltip提示气泡
 2. 闭包 var moduleA = (function() { return 'A' })
 3. 自己实现amd，核心api是define、require和use
 4. 使用node将amd、cmd和commonjs规范的代码编译成浏览器端可用的js
+
 
 二、如何使用
 
@@ -94,6 +96,7 @@ map.country.click = function(d, i, obj) {
 2.增加组件。将js文件放置在src/js/compoent下即可。
 
 3.增加事件。将js文件放置在src/js/events下即可。
+
 
 五、与图易的结合
 
