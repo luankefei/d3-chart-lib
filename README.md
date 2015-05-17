@@ -52,6 +52,7 @@ tooltip提示气泡
 4. 使用node将amd、cmd和commonjs规范的代码编译成浏览器端可用的js
 
 
+
 二、如何使用
 
 设计思路是将整个图表包装成一个web组件，灵感来源于jquery插件和angular的directive
@@ -73,6 +74,7 @@ var map = document.getElementById('map')
 Y.init(map)
 ```
 
+
 三、事件绑定
 
 事件绑定分两种，一种是通过event标签绑定，默认支持约10种事件。另一种是通过重写事件来进行扩展绑定。这里主要介绍扩展绑定。
@@ -89,6 +91,7 @@ map.country.click = function(d, i, obj) {
 }
 ```
 
+
 四、扩展
 
 1.增加图表。将js文件放置在src/js/chart下即可。
@@ -96,6 +99,7 @@ map.country.click = function(d, i, obj) {
 2.增加组件。将js文件放置在src/js/compoent下即可。
 
 3.增加事件。将js文件放置在src/js/events下即可。
+
 
 
 五、与图易的结合
