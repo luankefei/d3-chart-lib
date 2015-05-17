@@ -46,12 +46,14 @@ tooltip提示气泡
 模块化的设计，目的是减少全局污染、隐藏私有对象和多人协同开发。
 
 目前想到的可行方案：
+
 1. 命名空间方式 namespace.util、namespace.http
+
 2. 闭包 var moduleA = (function() { return 'A' })
+
 3. 自己实现amd，核心api是define、require和use
+
 4. 使用node将amd、cmd和commonjs规范的代码编译成浏览器端可用的js
-
-
 
 二、如何使用
 
@@ -74,7 +76,6 @@ var map = document.getElementById('map')
 Y.init(map)
 ```
 
-
 三、事件绑定
 
 事件绑定分两种，一种是通过event标签绑定，默认支持约10种事件。另一种是通过重写事件来进行扩展绑定。这里主要介绍扩展绑定。
@@ -91,7 +92,6 @@ map.country.click = function(d, i, obj) {
 }
 ```
 
-
 四、扩展
 
 1.增加图表。将js文件放置在src/js/chart下即可。
@@ -99,8 +99,6 @@ map.country.click = function(d, i, obj) {
 2.增加组件。将js文件放置在src/js/compoent下即可。
 
 3.增加事件。将js文件放置在src/js/events下即可。
-
-
 
 五、与图易的结合
 
@@ -111,3 +109,5 @@ map.country.click = function(d, i, obj) {
 3.调用组件初始化函数
 
 done!
+
+
