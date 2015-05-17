@@ -66,10 +66,12 @@ tooltip提示气泡
     <event data-name="hover" data-type="highlight"></event>
     <component data-name="axis"></component>
 </chart>
+```
 
 ```javascript
 var map = document.getElementById('map')
 Y.init(map)
+```
 
 三、事件绑定
 
@@ -85,5 +87,5 @@ map.country.click = function(d, i, obj) {
   obj = d3.select(obj)
   obj.style('fill', 'red')
 }
-
+```
 
