@@ -45,17 +45,6 @@
 </head>
 <body>
 
-    <header>
-        <img alt="" src="images/logo.jpg">
-        <h1>UNMET NEEDS ANALYSIS STUDY VISUALIZATION REPORT</h1>
-
-        <div class="tab">
-            <button class="button" id="country">Country Map</button>
-            <button class="button selected" id="global">Globle Map</button>
-        </div>
-    </header>
-
-
     <chart id="map" data-name="worldMap">
         <data src="data/world.json"></data>
     </chart>
@@ -64,9 +53,6 @@
         <data>[0, 10, 5, 20, 35, 15, 25, 23, 28, 33, 24, 14, 19]</data>
         <interactive data-target="#map > .country" data-type="line(2)"></interactive>
     </chart>
-
-    <footer>GLOBLE NUMET NEEDS</footer>
-
 
     <script src="js/lib/d3.v3.min.js"></script>
     <script src="js/lib/d3.geo.projection.v0.min.js"></script>
