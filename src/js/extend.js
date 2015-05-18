@@ -4,16 +4,20 @@
  * @name extend
  */
 
-(function(TE) {
+(function(Y) {
 
-    var core = TE.use('core'),
-        http = TE.use('http')
+    var core = Y.use('core'),
+        http = Y.use('http'),
+        interactive = Y.use('interactive')
 
-    TE.extend({
+    Y.extend({
 
         init: core.init,
         getScript: http.getScript,
         getJson: http.getJson,
+        bindEvent: interactive.bindEvent
     })
 
-})(TE)
+
+
+})(Ycharts)

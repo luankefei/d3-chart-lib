@@ -11,8 +11,8 @@ var karma = require('karma')
 var connect = require('gulp-connect')
 var livereload = require('gulp-livereload')
 
-var amdOptimize = require('amd-optimize');
-var concat = require('gulp-concat');
+// var amdOptimize = require('amd-optimize')
+// var concat = require('gulp-concat')
 
 gulp.task('connect', function() {
 
@@ -84,13 +84,13 @@ gulp.task('watch', function() {
 })
 
 
-gulp.task('bundle', function ()
-{
-    return gulp.src('**/*.js')
-        .pipe(amdOptimize('main'))
-        .pipe(concat('main-bundle.js'))
-        .pipe(gulp.dest('dist'));
-});
+// gulp.task('bundle', function ()
+// {
+//     return gulp.src('**/*.js')
+//         .pipe(amdOptimize('main'))
+//         .pipe(concat('main-bundle.js'))
+//         .pipe(gulp.dest('dist'));
+// });
 
 // karma test
 gulp.task('karma', function() {
@@ -103,5 +103,5 @@ gulp.task('karma', function() {
 
 // Default
 //gulp.task('default', ['lint', 'minify', 'watch', 'browser-sync'])
-gulp.task('default', ['lint', 'minify', 'watch', 'connect', 'bundle'])
+gulp.task('default', ['lint', 'minify', 'watch', 'connect'])
 

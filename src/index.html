@@ -8,23 +8,6 @@
 
     <style>
 
-    body {
-
-        background: red;
-        /*background: #153566;*/
-    }
-
-    #map {
-        width: 1900px;
-        height: 1000px;
-
-        fill: #153566;
-        stroke: #85aecc;
-        stroke-width: 1px;
-        opacity: 0.8;
-        padding-top: 50px;
-    }
-
     #bar {
         width: 1400px;
         height: 200px;
@@ -34,9 +17,9 @@
         stroke-width: 1px;
         opacity: 0.8;
 
-        position: absolute;
+        /*position: absolute;
         top: 600px;
-        left: 250px;
+        left: 250px;*/
         /*top: 100px;*/
     }
 
@@ -45,14 +28,17 @@
 </head>
 <body>
 
-    <chart id="map" data-name="worldMap">
-        <data src="data/world.json"></data>
-    </chart>
-
     <chart id="bar" data-name="lengthBar">
         <data>[0, 10, 5, 20, 35, 15, 25, 23, 28, 33, 24, 14, 19]</data>
-        <interactive data-target="#map > .country" data-type="line(2)"></interactive>
+        <config src="data/config.json"></config>
+        <interactive data-name="mouseover" data-trigger="bar" data-type="highlight"></interactive>
+        <component data-name="axis"></component>
     </chart>
+
+    <!-- <chart id="bar" data-name="lengthBar">
+        <data>[0, 10, 5, 20, 35, 15, 25, 23, 28, 33, 24, 14, 19]</data>
+        <interactive data-target="#map > .country" data-type="line(2)"></interactive>
+    </chart> -->
 
     <script src="js/lib/d3.v3.min.js"></script>
     <script src="js/lib/d3.geo.projection.v0.min.js"></script>
@@ -61,32 +47,34 @@
 
     <script src="js/main.js"></script>
     <script src="js/http.js"></script>
-    <!--<script src="js/promise.js"></script>-->
 
     <script src="js/chart.js"></script>
     <script src="js/dom.js"></script>
     <script src="js/core.js"></script>
     <script src="js/interactive.js"></script>
+    <script src="js/events.js"></script>
+
+
     <script src="js/extend.js"></script>
-    <script src="js/config.js"></script>
 
     <script>
 
-    var map = document.getElementById('map')
     var bar = document.getElementById('bar')
 
-    T.init(map)
-    T.init(bar)
+    Y.init(bar)
 
-    map = T.find('#map')
+    //var map = document.getElementById('map')
 
-    // 以下事件均为延迟绑定
-    map.country = {}
-    map.country.click = function(d, i, obj) {
+    //Y.init(map)
 
-        obj = d3.select(obj)
-        obj.style('fill', 'red')
-    }
+    // map = T.find('#map')
+
+    // map.country = {}
+    // map.country.click = function(d, i, obj) {
+
+    //     obj = d3.select(obj)
+    //     obj.style('fill', 'red')
+    // }
 
     </script>
 

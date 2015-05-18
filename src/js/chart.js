@@ -6,9 +6,9 @@
 
 'use strict'
 
-TE.define('chart', [], function() {
+Y.define('chart', [], function() {
 
-    var http = T.use('http')
+    var http = Y.use('http')
 
     var chart = {
 
@@ -24,9 +24,11 @@ TE.define('chart', [], function() {
                 var c = eval('new ' + name + '(svg, data)')
                 // selector将作为chartMap中的key值，暂时使用用户定义的id
                 var id = svg.getAttribute('id')
-                var self = T.find('#' + id)
+                var self = Y.find('#' + id)
 
+                // TODO: selector暂时使用id代替
                 self.chart = {
+                    selector: id,
                     name: name,
                     obj: c
                 }
@@ -39,6 +41,9 @@ TE.define('chart', [], function() {
                 c.height = c.height.substring(0, c.height.length - 2)
 
                 c.draw()
+
+                // 绑定事件
+                Y.bindEvent(self)
             })
         }
     }

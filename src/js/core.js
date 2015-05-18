@@ -5,11 +5,11 @@
  * 绘图功能的入口模块
  * @name core
  */
-TE.define('core', [], function() {
+Y.define('core', [], function() {
 
-    var dom = T.use('dom')
-    var chart = T.use('chart')
-    var interactive = T.use('interactive')
+    var dom = Y.use('dom')
+    var chart = Y.use('chart')
+    var interactive = Y.use('interactive')
 
     var core = {
 
@@ -21,9 +21,18 @@ TE.define('core', [], function() {
                 var name = ele.getAttribute('data-name')
                 var act = dom.getInteractive(ele)
 
-                interactive.init(act)
+                // 加载config文件，进行绘图
+                dom.getConfig(ele, function(config) {
 
-                chart.draw(name, svg, data)
+                    // 初始化事件
+                    act = interactive.init(act)
+
+                    // 绑定事件，与用户扩展事件逻辑一致
+                    act.bind(ele)
+
+                    chart.draw(name, svg, data)
+
+                })
             })
         }
     }

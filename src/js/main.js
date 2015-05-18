@@ -17,27 +17,24 @@
 
     var noop = function () {}       // 用于amd模块
 
-    var TE  = (function() {
+    var Y  = (function() {
         
-        var TE = {}
+        var Y = {}
 
-        TE.fn = TE.prototype = {
-            constructor: TE,
-            // 一堆原型属性和方法
-        }
-
-        TE.extend = TE.fn.extend = function() {
+        Y.extend = function() {
 
             for (var key in arguments[0]) {
 
-                TE[key] = arguments[0][key]
+                Y[key] = arguments[0][key]
             }
         }
 
-        return TE
+        return Y
     })()
 
-    TE.extend({
+    Y.extend({
+
+        Ycharts: version,
 
         // find用于读取chartMap中的对象
         find: function(selector) {
@@ -47,18 +44,14 @@
             if (typeof c === 'undefined') {
 
                 c = chartMap[selector] = {}
+                chartMap[selector]['part'] = {}
+                chartMap[selector]['chart'] = {}
             }
-
-            console.log('--------------------------------')
-            console.log(chartMap)
-            console.log(c)
 
             return c
         },
 
         define: function(name, dependencies, factory) {
-
-            console.log('define: ' + name)
 
             if (!moduleMap[name]) {
 
@@ -148,7 +141,7 @@
     })
 
 
-    global.TE = global.T = TE
+    global.Y = global.Ycharts = Y
 
 }
 (window, window.document)
@@ -156,5 +149,6 @@
 
 /**
  * 2015.5.11 整合了原有的module.js模块，使框架结构更清晰
+ * 2015.5.18 修改了find函数，该函数将生成更为详细的数据结构
  */
 

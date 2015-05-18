@@ -2,9 +2,9 @@
 'use strict'
 
 
-TE.define('dom', [], function() {
+Y.define('dom', [], function() {
 
-    var http = T.use('http')
+    var http = Y.use('http')
 
     var dom = {
 
@@ -27,6 +27,19 @@ TE.define('dom', [], function() {
             return newEle
         },
 
+        // config只支持src
+        getConfig: function(ele, callback) {
+
+            var eleConfig = ele.getElementsByTagName('config')[0]
+            var src = eleConfig.getAttribute('src')
+
+            http.loadResource(src, function(data) {
+
+                callback && callback(data)
+            })
+        },
+
+        // data支持src和innerHTML两种形式
         getData: function(ele, callback) {
 
             var eleData = ele.getElementsByTagName('data')[0]
@@ -48,6 +61,7 @@ TE.define('dom', [], function() {
             }
         },
 
+        // 获取默认交互事件
         getInteractive: function(ele) {
 
             var eleAct = ele.getElementsByTagName('interactive')[0]
@@ -59,9 +73,10 @@ TE.define('dom', [], function() {
             
             } else {
 
+                act.trigger = eleAct.getAttribute('data-trigger')
+                act.name = eleAct.getAttribute('data-name')
                 act.target = eleAct.getAttribute('data-target'),
                 act.type = eleAct.getAttribute('data-type')
-
             }
 
             return act

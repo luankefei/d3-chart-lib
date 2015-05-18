@@ -16,9 +16,9 @@ chartMap = {
             }
         },
 
-        country: {
+        bar: {
 
-            click: func2
+            click: [func1]
         }
 
     },

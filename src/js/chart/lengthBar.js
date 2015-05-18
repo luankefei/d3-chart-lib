@@ -63,6 +63,10 @@ function lengthBar(svg, data) {
 
                 return i
             })
+            .attr('data-d', function(d, i) {
+
+                return d
+            })
 
         // // 添加说明文本
         // svg.selectAll('text')

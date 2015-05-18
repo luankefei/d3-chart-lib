@@ -5,7 +5,7 @@
  * 数据交互模块，处理请求
  * @name  http.js
  */
-TE.define('http', [], function() {
+Y.define('http', [], function() {
 
     var http = {
 
@@ -40,7 +40,6 @@ TE.define('http', [], function() {
 
             req.setRequestHeader('Content-Type', 'application/json')
             req.send(null)
-
         },
 
         loadResource: function(url, callback) {
