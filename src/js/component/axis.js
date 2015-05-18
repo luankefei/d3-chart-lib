@@ -38,7 +38,7 @@ Y.define('axis', [], function(data) {
 			var chart = chart['chart']
 
 			var data = chart.data,
-				obj = chart.obj
+				obj = chart.obj,
 				svg = obj.svg
 
 			var xScale = axis.scale('ordinal')
