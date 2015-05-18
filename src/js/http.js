@@ -37,7 +37,7 @@ TE.define('http', [], function() {
 
             req.setRequestHeader('Content-Type', 'application/json')
             req.send(null)
-            
+
         },
 
         loadResource: function(url, callback) {
