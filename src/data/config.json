@@ -1,7 +1,11 @@
 {
 	"selector": "#bar",
-	"width": 400,
+	"width": 1000,
 	"height": 300,
+	"paddingLeft": 200,
+	"paddingRight": 200,
+	"paddingTop": 10,
+	"paddingBottom": 10,
 	"dataset": [],
 	"colorset": [],
 	"title": {

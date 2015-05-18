@@ -18,6 +18,8 @@
         bindEvent: interactive.bindEvent
     })
 
-
-
 })(Ycharts)
+
+/**
+ * 2015.5.18 增加了bindEvent
+ */

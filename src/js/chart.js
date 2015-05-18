@@ -12,17 +12,14 @@ Y.define('chart', [], function() {
 
     var chart = {
 
-        draw: function(name, svg, data) {
+        draw: function(name, svg, data, config) {
 
             var url = './js/chart/' + name + '.js'
 
             http.getScript(url, function() {
 
-                var style = getComputedStyle(svg)
-                
-                // TODO: 去掉eval
                 var c = eval('new ' + name + '(svg, data)')
-                // selector将作为chartMap中的key值，暂时使用用户定义的id
+                // TODO: selector将作为chartMap中的key值，暂时使用用户定义的id
                 var id = svg.getAttribute('id')
                 var self = Y.find('#' + id)
 
@@ -33,12 +30,11 @@ Y.define('chart', [], function() {
                     obj: c
                 }
 
-                c.id = id
-                c.width = style.width
-                c.height = style.height
+                // 将所有config绑定到图表对象上
+                for (var k in config) {
 
-                c.width = c.width.substring(0, c.width.length - 2)
-                c.height = c.height.substring(0, c.height.length - 2)
+                    c[k] = config[k]
+                }
 
                 c.draw()
 
@@ -50,3 +46,9 @@ Y.define('chart', [], function() {
 
     return chart
 })
+/**
+ * 2015.5.18
+ * 放弃了原使用css的设计，样式改从config中读取
+ * 绘图后会进行事件绑定
+ * 
+ */

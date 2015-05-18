@@ -53,6 +53,11 @@ Y.define('http', [], function() {
 
                     break
 
+                case 'js':
+                    http.getScript(url, callback)
+
+                    break
+
                 default:
                     break
             }

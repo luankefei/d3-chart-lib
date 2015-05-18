@@ -24,8 +24,8 @@ function lengthBar(svg, data) {
             .attr('height', that.height)
 
         // TODO: magic number
-        var paddingLeft = 210, 
-            paddingBottom = 10
+        var paddingLeft = this.paddingLeft, 
+            paddingBottom = this.paddingBottom
 
         var color = d3.scale.category10()
 

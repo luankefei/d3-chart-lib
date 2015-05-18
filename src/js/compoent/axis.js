@@ -18,10 +18,10 @@ T.define('axis', [], function(data) {
 				.attr('transform', 'translate(' + transform[0] + ',' + transform[1] + ')')
 				.call(axis)
 
-			this.svg.selectAll(".tick line").attr(this.axisStyle)
-			this.svg.selectAll(".tick text").attr(this.textStyle)
-			this.svg.selectAll(".xAxis path").attr(this.axisStyle)
-			this.svg.selectAll(".yAxis path").attr(this.axisStyle)
+			this.svg.selectAll('.tick line').attr(this.axisStyle)
+			this.svg.selectAll('.tick text').attr(this.textStyle)
+			this.svg.selectAll('.xAxis path').attr(this.axisStyle)
+			this.svg.selectAll('.yAxis path').attr(this.axisStyle)
 
 		},
 

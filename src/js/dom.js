@@ -8,11 +8,11 @@ Y.define('dom', [], function() {
 
     var dom = {
 
-        replaceDom: function(ele) {
+        replaceDom: function(node) {
 
-            var id = ele.getAttribute('id'),
-                clas = ele.getAttribute('class'),
-                type = ele.getAttribute('data-type')
+            var id = node.getAttribute('id'),
+                clas = node.getAttribute('class'),
+                type = node.getAttribute('data-type')
 
             var newEle = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
 
@@ -22,16 +22,16 @@ Y.define('dom', [], function() {
 
             document.getElementsByTagName('body')[0].appendChild(newEle)
 
-            ele.parentNode.replaceChild(newEle, ele)
+            node.parentNode.replaceChild(newEle, node)
 
             return newEle
         },
 
         // config只支持src
-        getConfig: function(ele, callback) {
+        getConfig: function(node, callback) {
 
-            var eleConfig = ele.getElementsByTagName('config')[0]
-            var src = eleConfig.getAttribute('src')
+            var nodeConfig = node.getElementsByTagName('config')[0]
+            var src = nodeConfig.getAttribute('src')
 
             http.loadResource(src, function(data) {
 
@@ -40,15 +40,15 @@ Y.define('dom', [], function() {
         },
 
         // data支持src和innerHTML两种形式
-        getData: function(ele, callback) {
+        getData: function(node, callback) {
 
-            var eleData = ele.getElementsByTagName('data')[0]
-            var src = eleData.getAttribute('src')
+            var nodeData = node.getElementsByTagName('data')[0]
+            var src = nodeData.getAttribute('src')
             var data = null
 
             if (src == null) {
 
-                data = eval(eleData.innerHTML)
+                data = eval(nodeData.innerHTML)
 
                 callback && callback(data)
 
@@ -62,21 +62,21 @@ Y.define('dom', [], function() {
         },
 
         // 获取默认交互事件
-        getInteractive: function(ele) {
+        getInteractive: function(node) {
 
-            var eleAct = ele.getElementsByTagName('interactive')[0]
+            var nodeAct = node.getElementsByTagName('interactive')[0]
             var act = {}
 
-            if (typeof eleAct === 'undefined') {
+            if (typeof nodeAct === 'undefined') {
 
                 act = null
             
             } else {
 
-                act.trigger = eleAct.getAttribute('data-trigger')
-                act.name = eleAct.getAttribute('data-name')
-                act.target = eleAct.getAttribute('data-target'),
-                act.type = eleAct.getAttribute('data-type')
+                act.trigger = nodeAct.getAttribute('data-trigger')
+                act.name = nodeAct.getAttribute('data-name')
+                act.target = nodeAct.getAttribute('data-target'),
+                act.type = nodeAct.getAttribute('data-type')
             }
 
             return act
