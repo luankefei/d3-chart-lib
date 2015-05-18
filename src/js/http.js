@@ -9,7 +9,8 @@ Y.define('http', [], function() {
 
     var http = {
 
-        // 通过私有定义的方法是模块和TE对象共有的
+        // 通过私有定义的方法是模块和Y对象共有的
+        // TODO: 现有设计会污染window对象，以后会取消异步加载
         getScript: function(url, callback) {
 
             var script = document.createElement('script')

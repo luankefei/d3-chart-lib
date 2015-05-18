@@ -27,7 +27,8 @@ Y.define('chart', [], function() {
                 self.chart = {
                     selector: id,
                     name: name,
-                    obj: c
+                    obj: c,
+                    data: data,
                 }
 
                 // 将所有config绑定到图表对象上

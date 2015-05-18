@@ -71,12 +71,16 @@ gulp.task('watch', function() {
     })
 
     gulp.watch('src/js/*.js', ['lint', 'minify', 'script'], function(file) {
-
+        
         server.changed(file.path)
-
     })
 
-    gulp.watch('src/css/*.css', ['lint', 'minify', 'script'], function(file) {
+    gulp.watch('src/js/*/*.js', ['lint', 'minify', 'script'], function(file) {
+        
+        server.changed(file.path)
+    })
+
+    gulp.watch('src/css/*.css', ['lint', 'minify', 'css'], function(file) {
 
         server.changed(file.path)
 

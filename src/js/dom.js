@@ -64,6 +64,7 @@ Y.define('dom', [], function() {
         // 获取默认交互事件
         getInteractive: function(node) {
 
+            // TODO: 事件可能有多个
             var nodeAct = node.getElementsByTagName('interactive')[0]
             var act = {}
 
@@ -80,7 +81,26 @@ Y.define('dom', [], function() {
             }
 
             return act
-        }
+        },
+
+        // 获取组件
+        getComponent: function(node) {
+
+            // 组件可能有多个
+            var doms = node.getElementsByTagName('component')
+            var components = []
+
+            for (var i = 0; i < doms.length; i++) {
+
+                var c = {}
+
+                c.name = doms[i].getAttribute('data-name')
+
+                components.push(c)
+            }
+
+            return components
+        }   
     }
 
     return dom
