@@ -13,7 +13,6 @@ function worldMap(svg, data) {
     this.id = null
     this.svg = svg
 
-
     this.events = {}
 
     var that = this
@@ -62,23 +61,13 @@ function worldMap(svg, data) {
 
                     return d.id
                 })
-                .on('click', function(d, i) {
+                .attr('data-d', function(d) {
 
-                    var self = T.find('#' + that.id)
-
-                    self.country.click && self.country.click(d, i, this)
+                    return d
                 })
-                .on('mouseover', function() {
+                .attr('data-i', function(d, i) {
 
-                    var self = T.find('#' + that.id)
-
-                    self.country.mouseover && self.country.mouseover(d, i, this)
-                })
-                .on('mouseout', function() {
-
-                    var self = T.find('#' + that.id)
-
-                    self.country.mouseout && self.country.mouseout(d, i, this)
+                    return i
                 })
 
             svg.insert('path', '.graticule')
@@ -89,6 +78,9 @@ function worldMap(svg, data) {
                 .style('stroke', style.stroke)
                 .style('stroke-width', style.strokeWidth)
                 .attr('d', path)
+
+
+            // 调用一个通用的绑定事件函数，传入这个图标的selector，遍历所有事件进行绑定
 
         }
 

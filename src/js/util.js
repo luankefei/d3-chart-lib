@@ -1,4 +1,10 @@
+'use strict'
 
+
+/**
+ * 工具模块，定义了大量工具函数，多为组件库内部使用
+ * @name  util.js
+ */
 T.define('util', [], function() {
 
     var util = {}

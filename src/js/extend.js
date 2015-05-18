@@ -1,3 +1,9 @@
+
+/**
+ * 负责暴露api到全局对象上
+ * @name extend
+ */
+
 (function(TE) {
 
     var core = TE.use('core'),

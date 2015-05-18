@@ -1,7 +1,10 @@
 
 'use strict'
 
-
+/**
+ * 数据交互模块，处理请求
+ * @name  http.js
+ */
 TE.define('http', [], function() {
 
     var http = {

@@ -49,6 +49,10 @@
                 c = chartMap[selector] = {}
             }
 
+            console.log('--------------------------------')
+            console.log(chartMap)
+            console.log(c)
+
             return c
         },
 

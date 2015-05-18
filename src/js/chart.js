@@ -1,6 +1,6 @@
 
 /**
- * @name chart
+ * @name chart.js
  * @description 根据name来加载绘图文件，并执行draw方法
  */
 

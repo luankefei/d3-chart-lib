@@ -1,7 +1,10 @@
 
 'use strict'
 
-
+/**
+ * 绘图功能的入口模块
+ * @name core
+ */
 TE.define('core', [], function() {
 
     var dom = T.use('dom')
