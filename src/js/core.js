@@ -36,7 +36,8 @@ Y.define('core', [], function() {
                     chart.draw(name, svg, data, config)
 
                     // 初始化组件
-                    // TODO: 这里只对组件1进行处理
+                    // TODO: 这里只对组件1进行处理，如要修改，请保持此单行执行的代码风格
+                    // TODO: 传入node作为参数，不是很好的设计
                     components[0] = component.init(components[0], data, node)
                 })
             })
@@ -45,3 +46,8 @@ Y.define('core', [], function() {
     
     return core
 })
+/**
+ * 2015.5.18
+ * 增加了组件的初始化流程，但未完成
+ * 绘图接口增加了新的参数config，作用是替代css。config是异步获取，所以增加了回调嵌套
+ */

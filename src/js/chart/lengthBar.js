@@ -3,6 +3,7 @@
  * @dete 2015.04.28
  * @version 0.0.1
  */
+
 function lengthBar(svg, data) {
 
 	this.data = data

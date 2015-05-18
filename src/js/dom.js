@@ -1,7 +1,11 @@
 
 'use strict'
 
-
+/**
+ * dom模块负责解析html代码
+ * @name dom.js
+ * @date 2015.5.9
+ */
 Y.define('dom', [], function() {
 
     var http = Y.use('http')
@@ -105,3 +109,9 @@ Y.define('dom', [], function() {
 
     return dom
 })
+/**
+ * 2015.5.18
+ * 增加了getComponent函数，该函数用来解析组件标签
+ * 修改了getInteractive函数，但未完成，该函数应该可以处理多个事件
+ * 增加了getConfig函数，该函数用来解析图表样式
+ */
