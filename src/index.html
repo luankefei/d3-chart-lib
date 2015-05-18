@@ -59,22 +59,24 @@
 
     <script>
 
-    var bar = document.getElementById('bar')
+    var chart = document.getElementById('bar')
 
-    Y.init(bar)
+    Y.init(chart)
 
-    //var map = document.getElementById('map')
+    chart = Y.find('#bar')
 
-    //Y.init(map)
+    chart.part = {}
+    chart.part.bar = []
+   
+    chart.part.bar.push({
 
-    // map = T.find('#map')
+        name: 'click',
+        type: 'custom',
+        func: function(d, i, obj) {
 
-    // map.country = {}
-    // map.country.click = function(d, i, obj) {
-
-    //     obj = d3.select(obj)
-    //     obj.style('fill', 'red')
-    // }
+            console.log('clicked')
+        }
+    })
 
     </script>
 

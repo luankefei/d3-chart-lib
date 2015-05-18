@@ -10,7 +10,7 @@
 Y.define('interactive', [], function() {
 
     var http = Y.use('http'),
-        evetns = Y.use('events')
+        events = Y.use('events')
 
     function interactive() {
 
@@ -22,9 +22,9 @@ Y.define('interactive', [], function() {
         this.bind = function(dom) {
 
             // TODO: 这里为了方便，后面要改成selector
-            var chart = Y.find('#' + id)
             var id = dom.getAttribute('id')
-
+            var chart = Y.find('#' + id)
+            
             var act = { 
 
                 trigger: this.trigger,
@@ -48,6 +48,7 @@ Y.define('interactive', [], function() {
                 func: act.type
             })
 
+            // 取消了事件绑定，bind函数只用来声明事件
             //active.bindEvent(chart, dom)
         }
     }
@@ -76,7 +77,6 @@ Y.define('interactive', [], function() {
             var parts = chart['part']
             var partNames = []
 
-
             for (var k in parts) {
 
                 partNames.push(k)
@@ -97,11 +97,16 @@ Y.define('interactive', [], function() {
                     var eve = eventList[j]
                     var doms = document.querySelectorAll(selector)
 
-
                     for (var k = 0; k < doms.length; k++) {
 
-                        //var url = './js/interactive/' + eve.func + '.js
-                        doms[k].addEventListener(eve.name, events[eve.type], false)
+                        var func = eve.func
+
+                        if (typeof eve.func === 'string') {
+
+                            func = events[eve.func]
+                        }
+
+                        doms[k].addEventListener(eve.name, func, false)
                     }
                 }
             }
