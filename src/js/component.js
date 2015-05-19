@@ -6,47 +6,27 @@
 /**
  * @description 组件入口
  * @date 2015.5.18
- * 
  */
 Y.define('component', [], function(data) {
 
 	var http = Y.use('http')
 	var component = {}
 
-	component.init = function(obj, data, node) {
+	component.init = function(obj, data, selector) {
 
 		var name = obj['name']
 
-		// TODO: 测试用的setTimeout
-		setTimeout(function() {
+		var cop = Y.use(name)
+		var chart = Y.find(selector)
 
-			var cop = Y.use(name)
-			var id = node.getAttribute('id')
-			var chart = Y.find('#' + id)
-
-			cop.init(chart)
-
-		}, 1000)
-
-			//cop.bind(chart)
-			// 创建组件
-			
-			// TODO: 这里的id要替换成selector
-			
-			
-
-			// TODO: setTimeout只在测试时使用
-			// 
-			// setTimeout(function() {
-
-			// 	var svg = chart['chart']['svg']
-
-			// 	cop.create('xAxis', scaleX, svg)
-
-			// }, 1000)
-
-			// type, scale, chart, position, tickValues, transform
+		cop.init(chart)
 	}
-	
+
 	return component
 })
+
+/**
+ * 2015.5.19 
+ * 取消了setTimeout，组件代码将随组件库一同打包
+ * 修改了init函数，第三个参数从node替换成selector
+ */

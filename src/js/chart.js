@@ -14,12 +14,6 @@ Y.define('chart', [], function() {
 
         draw: function(name, svg, data, config) {
 
-            var url = './js/chart/' + name + '.js'
-
-            // 取消了http加载，可能改为模块加载
-            //http.getScript(url, function() {
-            //var lengthBar = Y.use('lengthBar')
-
             var c = eval('new ' + name + '(svg, data)')
             // TODO: selector将作为chartMap中的key值，暂时使用用户定义的id
             var id = svg.getAttribute('id')

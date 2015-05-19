@@ -14,7 +14,9 @@ Y.define('core', [], function() {
 
     var core = {
 
-        init: function(node) {
+        // 后面两个是可选参数，如果replace是true，会在svg中生成一个g节点
+        // 如果target存在，图表将会绘制到target的svg中
+        init: function(node, replace, target) {
 
             var data = dom.getData(node, function(data) {
 
@@ -26,6 +28,9 @@ Y.define('core', [], function() {
                 // 加载config文件，进行绘图
                 dom.getConfig(node, function(config) {
 
+                    // TODO: selector暂时使用id代替
+                    var selector = '#' + node.getAttribute('id')
+
                     // 初始化事件
                     act = interactive.init(act)
 
@@ -33,12 +38,12 @@ Y.define('core', [], function() {
                     act.bind(node)
 
                     // 绘图
+                    // TODO: 将replace和target向下传递
                     chart.draw(name, svg, data, config)
 
                     // 初始化组件
-                    // TODO: 这里只对组件1进行处理，如要修改，请保持此单行执行的代码风格
-                    // TODO: 传入node作为参数，不是很好的设计
-                    components[0] = component.init(components[0], data, node)
+                    // TODO: 这里只对组件1进行处理，如要修改，请保持此处的单行代码风格
+                    components[0] = component.init(components[0], data, selector)
                 })
             })
         }   // end function -> init
