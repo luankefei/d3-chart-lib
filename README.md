@@ -85,9 +85,11 @@ Y.init(node)
 ```
 
 在项目中，有些情况下，需要将多个图表生成到同一个svg内，以方便绘制关联图形，如连线。
+
 所以，在init方法上，增加了另外两个参数：replace, target
 
 如果replace为true（默认false），则绘图时，会在svg内生成一个g节点，图表将绘制在g节点内
+
 如果传入target，图表将会绘制在target的svg内，作为附属图表
 
 ```javascript
@@ -128,6 +130,7 @@ Y.addEvent(chart, handler)
 四、样式
 
 样式文件暂时放置在config.json内，以作示例。绘制图表和组件所需样式均从这里读取
+
 该文件暂时作为示例文件，以规范结构、方便测试。后面会作为默认数据，用户可使用api对其重写
 
 
