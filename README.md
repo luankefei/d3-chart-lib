@@ -6,7 +6,9 @@
 
 ##阅读顺序
 
-main.js -> core.js -> dom.js -> http.js -> chart.js -> interactive.js -> extend.js
+main.js -> core.js -> dom.js -> http.js -> chart.js -> interactive.js -> events -> component.js -> util.js -> extend.js
+
+
 
 ##模块概要
 
