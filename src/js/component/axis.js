@@ -26,7 +26,7 @@ Y.define('axis', [], function(data) {
 
 					break
 
-				default: 
+				default:
 					break
 			}
 
@@ -56,8 +56,8 @@ Y.define('axis', [], function(data) {
 
 		// 原设计：create的时候生成一个svg当做容器，bind的时候再剪切到目标svg
 		// type, scale, svg, position, tickValues, transform
-		// 
-		// 
+		//
+		//
 		create: function(type, scale, svg, data, position, transform) {
 
 			var axis = d3.svg.axis()
@@ -101,7 +101,7 @@ Y.define('axis', [], function(data) {
 })
 
 /**
- * 2015.5.18 
+ * 2015.5.18
  * 调整了组件结构，但尚不完善。oop可能更有表现力。
  * 增加了init函数，该函数将作为组件入口。负责获取绘图所需参数
  */
