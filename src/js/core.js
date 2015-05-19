@@ -14,7 +14,9 @@ Y.define('core', [], function() {
 
     var core = {
 
-        init: function(node) {
+        // 后面两个是可选参数，如果replace是true，会在svg中生成一个g节点
+        // 如果target存在，图表将会绘制到target的svg中
+        init: function(node, replace, target) {
 
             var data = dom.getData(node, function(data) {
 
@@ -36,6 +38,7 @@ Y.define('core', [], function() {
                     act.bind(node)
 
                     // 绘图
+                    // TODO: 将replace和target向下传递
                     chart.draw(name, svg, data, config)
 
                     // 初始化组件
