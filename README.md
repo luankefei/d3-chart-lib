@@ -64,8 +64,8 @@ tooltip提示气泡
 
 二、如何使用
 
-设计思路是将整个图表包装成一个web组件，灵感来源于jquery插件和angular的directive
-这与当前流行的web compoent组件化思路一致，未来切换到shadow dom也会很顺利
+设计思路是将整个图表包装成一个web组件，灵感来源于jquery插件和angular的directive。
+这与当前流行的web component组件化思路一致，未来切换到shadow dom也会很顺利
 
 一个图表由3部分组成，html代码段，js和样式。在使用默认样式的情况下，代码大致如下：
 
