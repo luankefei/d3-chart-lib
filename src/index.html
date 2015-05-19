@@ -34,7 +34,8 @@
     <script src="js/interactive.js"></script>
     <script src="js/events.js"></script>
 
-
+    
+    <script src="data/struct.js"></script>
     <script src="js/chart/lengthBar.js"></script>
     <script src="js/component.js"></script>
     <script src="js/component/axis.js"></script>
@@ -43,23 +44,26 @@
 
     <script>
 
-    var chart = document.getElementById('bar')
+    var dom = document.getElementById('bar')
 
-    Y.init(chart)
+    Y.init(dom)
 
-    chart = Y.find('#bar')
 
-    chart.part = {}
-    chart.part.bar = []
-   
-    chart.part.bar.push({
 
+    // 以下为用户自定事件代码
+    var chart = Y.find('#bar', dom)
+
+    var handler = {
+        part: 'bar',
         name: 'click',
         type: 'custom',
         func: function(e) {
             e.target.style.fill = 'red'
         }
-    })
+    }
+
+    // target, handler
+    Y.addEvent(chart, handler)
 
     </script>
 

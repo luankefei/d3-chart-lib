@@ -23,7 +23,7 @@ Y.define('interactive', [], function() {
 
             // TODO: 这里为了方便，后面要改成selector
             var id = dom.getAttribute('id')
-            var chart = Y.find('#' + id)
+            var chart = Y.find('#' + id, dom)
             
             var act = { 
 
@@ -117,3 +117,6 @@ Y.define('interactive', [], function() {
 
     return active
 })
+/**
+ * 2015.5.19 修改了bind方法，调用Y.find时传入了第二个参数dom，如果没有用户事件，这里应该是第一次调用Y.find
+ */

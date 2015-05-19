@@ -26,6 +26,9 @@ Y.define('core', [], function() {
                 // 加载config文件，进行绘图
                 dom.getConfig(node, function(config) {
 
+                    // TODO: selector暂时使用id代替
+                    var selector = '#' + node.getAttribute('id')
+
                     // 初始化事件
                     act = interactive.init(act)
 
@@ -36,9 +39,8 @@ Y.define('core', [], function() {
                     chart.draw(name, svg, data, config)
 
                     // 初始化组件
-                    // TODO: 这里只对组件1进行处理，如要修改，请保持此单行执行的代码风格
-                    // TODO: 传入node作为参数，不是很好的设计
-                    components[0] = component.init(components[0], data, node)
+                    // TODO: 这里只对组件1进行处理，如要修改，请保持此处的单行代码风格
+                    components[0] = component.init(components[0], data, selector)
                 })
             })
         }   // end function -> init
