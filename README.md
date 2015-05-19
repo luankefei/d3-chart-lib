@@ -6,8 +6,9 @@
 
 ##阅读顺序
 
-main.js -> core.js -> dom.js -> http.js -> chart.js -> interactive.js -> events -> component.js -> util.js -> extend.js
+main.js -> core.js -> dom.js -> http.js -> chart.js -> interactive.js -> events
 
+component.js -> util.js -> extend.js
 
 
 ##模块概要
@@ -22,7 +23,11 @@ http模块负责加载
 
 chart是整个图表的基类，作为绘图入口
 
-interactive定义了基础的几种交互类型，与页面的interactive标签配合使用，通过data-type来指定
+interactive模块是交互的入口，与页面的interactive标签配合使用，通过data-type来指定
+
+component模块负责初始化绘图组件
+
+events模块内定义了默认交互事件
 
 extend负责暴露api到组件对象
 
