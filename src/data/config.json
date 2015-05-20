@@ -24,18 +24,74 @@
 		"width": 400,
 		"height": 100,
 		"style": "",
-		"data": []
+		"data": [],
+		"lineStyle": {
+			"fill": "#ccc",
+			"stroke": "#999",
+			"stroke-width": "1px"
+		},
+		"textStyle": {
+			"fill": "#ccc",
+			"stroke": "#999",
+			"stroke-width": "1px",
+			"font-size": "14px",
+			"transform": "rotate(0,0,0)"
+		},
+		"pathStyle": {
+			"fill": "#ccc",
+			"stroke": "#999",
+			"stroke-width": "1px"
+		}
 	},
 	"xAxis": {
+		"show": true,
+		"position": "bottom",
+		"name": "这里是x轴命名的地方",
 		"data": [],
 		"domain": [],
 		"rangeType": [],
-		"rangeValue": 0
+		"rangeValue": 0,
+		"lineStyle": {
+			"fill": "#ccc",
+			"stroke": "#999",
+			"stroke-width": "1px"
+		},
+		"textStyle": {
+			"fill": "#ccc",
+			"stroke": "#999",
+			"stroke-width": "1px",
+			"font-size": "14px",
+			"transform": "rotate(0,0,0)"
+		},
+		"pathStyle": {
+			"fill": "#ccc",
+			"stroke": "#999",
+			"stroke-width": "1px"
+		}
 	},
-	"xAxis": {
+	"yAxis": {
+		"show": true,
+		"position": "left",
 		"data": [],
 		"domain": [],
 		"rangeType": [],
-		"rangeValue": 0
+		"rangeValue": 0,
+		"lineStyle": {
+			"fill": "#ccc",
+			"stroke": "#999",
+			"stroke-width": "1px"
+		},
+		"textStyle": {
+			"fill": "#ccc",
+			"stroke": "#999",
+			"stroke-width": "1px",
+			"font-size": "14px",
+			"transform": "rotate(0,0,0)"
+		},
+		"pathStyle": {
+			"fill": "#ccc",
+			"stroke": "#999",
+			"stroke-width": "1px"
+		}
 	}
 }
