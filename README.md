@@ -6,7 +6,10 @@
 
 ##阅读顺序
 
-main.js -> core.js -> dom.js -> http.js -> chart.js -> interactive.js -> extend.js
+main.js -> core.js -> dom.js -> http.js -> chart.js -> interactive.js -> events
+
+component.js -> util.js -> extend.js
+
 
 ##模块概要
 
@@ -20,7 +23,11 @@ http模块负责加载
 
 chart是整个图表的基类，作为绘图入口
 
-interactive定义了基础的几种交互类型，与页面的interactive标签配合使用，通过data-type来指定
+interactive模块是交互的入口，与页面的interactive标签配合使用，通过data-type来指定
+
+component模块负责初始化绘图组件
+
+events模块内定义了默认交互事件
 
 extend负责暴露api到组件对象
 
@@ -57,50 +64,85 @@ tooltip提示气泡
 
 二、如何使用
 
-设计思路是将整个图表包装成一个web组件，灵感来源于jquery插件和angular的directive
-这与当前流行的web compoent组件化思路一致，未来切换到shadow dom也会很顺利
+设计思路是将整个图表包装成一个web组件，灵感来源于jquery插件和angular的directive。
+这与当前流行的web component组件化思路一致，未来切换到shadow dom也会很顺利
 
 一个图表由3部分组成，html代码段，js和样式。在使用默认样式的情况下，代码大致如下：
 
 ```html
-<chart id="map" data-name="worldMap">
-    <data src="data/world.json"></data>
+<chart id="bar" data-name="worldMap">
+    <data>[0, 10, 5, 20, 35, 15, 25, 23, 28, 33, 24, 14, 19]</data>
     <config src="data/style.js"></config>
-    <event data-name="hover" data-type="highlight"></event>
+    <interactive data-name="mouseover" data-trigger="bar" data-type="highlight"></interactive>
     <component data-name="axis"></component>
 </chart>
 ```
 
 ```javascript
-var map = document.getElementById('map')
-Y.init(map)
+// 常规绘图
+var node = document.getElementById('bar')
+Y.init(node)
 ```
+
+在项目中，有些情况下，需要将多个图表生成到同一个svg内，以方便绘制关联图形，如连线。
+
+所以，在init方法上，增加了另外两个参数：replace, target
+
+如果replace为true（默认false），则绘图时，会在svg内生成一个g节点，图表将绘制在g节点内
+
+如果传入target，图表将会绘制在target的svg内，作为附属图表
+
+```javascript
+// 多图公用svg
+var map = Y.find('#map')
+var node = document.getElementById('bar')
+
+Y.init(node, true, map)
+```
+
 
 三、事件绑定
 
-事件绑定分两种，一种是通过event标签绑定，默认支持约10种事件。另一种是通过重写事件来进行扩展绑定。这里主要介绍扩展绑定。
+事件绑定分两种，一种是通过interactive标签绑定，默认支持约10种事件。另一种是通过重写事件来进行扩展绑定。这里主要介绍扩展绑定。
 
-```javascript
-var map = T.find('#map')
-
-// 以下事件均为延迟绑定
-map.country = {}
-map.country.click = function(d, i, obj) {
-
-  obj = d3.select(obj)
-  obj.style('fill', 'red')
-}
+```html
+<!-- 默认事件 -->
+<interactive data-name="mouseover" data-trigger="bar" data-type="highlight"></interactive>
 ```
 
-四、扩展
+```javascript
+// 事件扩展
+var chart = T.find('#bar', node)
 
-1.增加图表。将js文件放置在src/js/chart下即可。
+var handler = {
+    part: 'bar',
+    name: 'click',
+    type: 'custom',
+    func: function(e) {
+        e.target.style.fill = 'red'
+    }
+}
 
-2.增加组件。将js文件放置在src/js/compoent下即可。
+// 注册事件
+Y.addEvent(chart, handler)
+```
 
-3.增加事件。将js文件放置在src/js/events下即可。
+四、样式
 
-五、与图易的结合
+样式文件暂时放置在config.json内，以作示例。绘制图表和组件所需样式均从这里读取
+
+该文件暂时作为示例文件，以规范结构、方便测试。后面会作为默认数据，用户可使用api对其重写
+
+
+五、扩展
+
+1.增加图表。将js文件放置在src/js/chart下即可
+
+2.增加组件。将js文件放置在src/js/component下即可
+
+3.增加事件。将代码添加到src/js/events即可
+
+六、与图易的结合
 
 1.生成div
 
