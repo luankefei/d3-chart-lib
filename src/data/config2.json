@@ -1,0 +1,109 @@
+{
+	"selector": "#bar",
+	"type": "bar",
+	"width": 1000,
+	"height": 300,
+	"paddingLeft": 200,
+	"paddingRight": 200,
+	"paddingTop": 10,
+	"paddingBottom": 10,
+	"colorset": [],
+	"title": {
+		"text": "fjsjfs",
+		"position": "center"
+	},
+	"legend": {
+		"selector": "#legend",
+		"width": 400,
+		"height": 100,
+		"style": "",
+		"data": []
+	},
+	"timeAxis": {
+		"selector": "#legend",
+		"width": 400,
+		"height": 100,
+		"style": "",
+		"data": [],
+		"lineStyle": {
+			"fill": "#ccc",
+			"stroke": "#999",
+			"stroke-width": "1px"
+		},
+		"textStyle": {
+			"fill": "#ccc",
+			"stroke": "#999",
+			"stroke-width": "1px",
+			"font-size": "14px",
+			"transform": "rotate(0,0,0)"
+		},
+		"pathStyle": {
+			"fill": "#ccc",
+			"stroke": "#999",
+			"stroke-width": "1px"
+		}
+	},
+	"scale": {
+		"x": {
+
+		},
+		"y": {
+
+		}
+	},
+	"axis": {
+		"x": {
+			"show": true,
+			"position": "bottom",
+			"name": "这里是x轴命名的地方",
+			"data": [],
+			"domain": [],
+			"rangeType": [],
+			"rangeValue": 0,
+			"lineStyle": {
+				"fill": "none",
+				"stroke": "#c0f",
+				"stroke-width": "1px"
+			},
+			"textStyle": {
+				"fill": "#ccc",
+				"stroke": "#999",
+				"stroke-width": "1px",
+				"font-size": "14px",
+				"transform": "rotate(0,0,0)"
+			},
+			"pathStyle": {
+				"fill": "none",
+				"stroke": "#999",
+				"stroke-width": "1px"
+			}
+		},
+		"y": {
+			"show": true,
+			"position": "left",
+			"data": [],
+			"domain": [],
+			"rangeType": [],
+			"rangeValue": 0,
+			"lineStyle": {
+				"fill": "#ccc",
+				"stroke": "#999",
+				"stroke-width": "1px"
+			},
+			"textStyle": {
+				"fill": "#ccc",
+				"stroke": "#999",
+				"stroke-width": "1px",
+				"font-size": "14px",
+				"transform": "rotate(0,0,0)"
+			},
+			"pathStyle": {
+				"fill": "#ccc",
+				"stroke": "#999",
+				"stroke-width": "1px"
+			}
+		}
+	},
+	"series":{}
+
+}
