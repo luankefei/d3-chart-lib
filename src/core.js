@@ -16,7 +16,7 @@ var Core = {
 
             var svg = Dom.replaceDom(node)
             var name = node.getAttribute('data-name')
-            var act = Dom.getEvent(node)
+            var acts = Dom.getEvent(node)
             var components = Dom.getComponent(node)
 
             // 加载config文件，进行绘图
@@ -25,27 +25,16 @@ var Core = {
                 // TODO: selector暂时使用id代替
                 var selector = '#' + node.getAttribute('id')
 
-                // 存在验证
-                if (act !== null) {
-
-                    // 初始化事件
-                    act = Interactive.init(act)
-
-                    // 绑定事件，与用户扩展事件逻辑一致
-                    act.bind(node)
-                }
+                // 初始化事件
+                Interactive.init(acts, node)
 
                 // 绘图
                 // TODO: 将replace和target向下传递
                 Chart.draw(name, svg, data, config)
 
-                if (components !== null) {
-
-                    // 初始化组件
-                    // TODO: 这里只对组件1进行处理，如要修改，请保持此处的单行代码风格
-                    components[0] = Component.init(components[0], data, selector, config)
+                // 初始化组件
+                Component.init(components, data, selector, config)
         
-                }
             })
         })
     }
@@ -58,4 +47,5 @@ var Core = {
  * 2015.5.22
  * 更新了对Dom模块事件接口的调用函数
  * 增加了对event和component两个可选参数的存在验证，但代码风格糟糕，需要改进
+ * 移除了存在验证
  */

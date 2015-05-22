@@ -53,14 +53,27 @@ var Interactive = {
 
     init: function(act, dom) {
 
-        var obj = new interactive()
+        if (act === null || act === undefined) {
 
-        obj.trigger = act.trigger
-        obj.name = act.name
-        obj.type = act.type
-        obj.target = act.target
+            return
+        }
 
-        return obj
+        // act可能是多个
+        var objs = []
+
+        for (var i = 0; i < act.length; i++) {
+
+            var obj = new interactive()
+
+            obj.trigger = act[i].trigger
+            obj.name = act[i].name
+            obj.type = act[i].type
+            obj.target = act[i].target
+
+            obj.bind(dom)
+        }
+
+        //return objs
     },
 
     /**
@@ -113,4 +126,9 @@ var Interactive = {
 
 /**
  * 2015.5.19 修改了bind方法，调用Y.find时传入了第二个参数dom，如果没有用户事件，这里应该是第一次调用Y.find
+ * 2015.5.22 
+ * 修改了事件绑定流程，init会自动调用bind方法
+ * 添加了init方法的多标签支持
+ * 修改了init方法，对参数进行验证
+ * 
  */

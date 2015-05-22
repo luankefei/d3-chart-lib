@@ -64,23 +64,23 @@ var Dom = {
     // 获取默认交互事件
     getEvent: function(node) {
 
-        // TODO: 事件可能有多个
-        var nodeAct = node.getElementsByTagName('event')[0]
-        var act = {}
+        // 事件可能有多个
+        var doms = node.getElementsByTagName('event')
+        var events = []
 
-        if (typeof nodeAct === 'undefined') {
+        for (var i = 0; i < doms.length; i++) {
 
-            act = null
-        
-        } else {
+            var e = {}
 
-            act.trigger = nodeAct.getAttribute('data-trigger')
-            act.name = nodeAct.getAttribute('data-name')
-            act.target = nodeAct.getAttribute('data-target'),
-            act.type = nodeAct.getAttribute('data-type')
+            e.trigger = doms[i].getAttribute('data-trigger')
+            e.name = doms[i].getAttribute('data-name')
+            e.target = doms[i].getAttribute('data-target'),
+            e.type = doms[i].getAttribute('data-type')
+
+            events.push(e)
         }
 
-        return act
+        return events.length === 0 ? null : events
     },
 
     // 获取组件
@@ -110,4 +110,5 @@ var Dom = {
  * 增加了getConfig函数，该函数用来解析图表样式
  * 2015.5.22
  * 重命名 getInteractive - > getEvent
+ * 修改了getEvent和getComponent函数，添加多标签支持
  */
