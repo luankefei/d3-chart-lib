@@ -8,9 +8,9 @@
  */
 Y.define('axis', [], function(data) {
 
-
+	// var config = Y.use('')
 	var axis = {
-
+		selfConf: {},
 		scale: function(type) {
 
 			var obj = null
@@ -34,7 +34,9 @@ Y.define('axis', [], function(data) {
 			return obj
 		},
 
-		init: function(chart) {
+		init: function(chart, selfConf) {
+
+			this.selfConf = selfConf
 
 			var chart = chart['chart']
 
@@ -72,10 +74,15 @@ Y.define('axis', [], function(data) {
 				.call(axis)
 
 			// TODO: 组件库最好不要整合css
-			svg.selectAll('.tick line').attr(this.axisStyle)
-			svg.selectAll('.tick text').attr(this.textStyle)
-			svg.selectAll('.xAxis path').attr(this.axisStyle)
-			svg.selectAll('.yAxis path').attr(this.axisStyle)
+
+			svg.selectAll('.xAxis line').style(this.selfConf.x.lineStyle)
+			svg.selectAll('.xAxis text').style(this.selfConf.x.textStyle)
+			svg.selectAll('.xAxis path').style(this.selfConf.x.pathStyle)
+
+			svg.selectAll('.yAxis line').style(this.selfConf.x.lineStyle)
+			svg.selectAll('.yAxis text').style(this.selfConf.x.textStyle)
+			svg.selectAll('.yAxis path').style(this.selfConf.x.pathStyle)
+
 		},
 
 		bind: function() {

@@ -28,6 +28,7 @@ Y.define('core', [], function() {
                 // 加载config文件，进行绘图
                 dom.getConfig(node, function(config) {
 
+
                     // TODO: selector暂时使用id代替
                     var selector = '#' + node.getAttribute('id')
 
@@ -43,12 +44,12 @@ Y.define('core', [], function() {
 
                     // 初始化组件
                     // TODO: 这里只对组件1进行处理，如要修改，请保持此处的单行代码风格
-                    components[0] = component.init(components[0], data, selector)
+                    components[0] = component.init(components[0], data, selector, config)
                 })
             })
         }   // end function -> init
     }
-    
+
     return core
 })
 /**

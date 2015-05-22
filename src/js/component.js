@@ -12,21 +12,21 @@ Y.define('component', [], function(data) {
 	var http = Y.use('http')
 	var component = {}
 
-	component.init = function(obj, data, selector) {
+	component.init = function(obj, data, selector, config) {
 
 		var name = obj['name']
 
 		var cop = Y.use(name)
 		var chart = Y.find(selector)
 
-		cop.init(chart)
+		cop.init(chart, config[name])
 	}
 
 	return component
 })
 
 /**
- * 2015.5.19 
+ * 2015.5.19
  * 取消了setTimeout，组件代码将随组件库一同打包
  * 修改了init函数，第三个参数从node替换成selector
  */
