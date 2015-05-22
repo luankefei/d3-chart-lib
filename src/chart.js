@@ -11,7 +11,7 @@ var Chart = {
         var c = eval('new ' + name + '(svg, data)')
         // TODO: selector将作为chartMap中的key值，暂时使用用户定义的id
         var id = svg.getAttribute('id')
-        var self = Y.find('#' + id)
+        var self = Y.find('#' + id, name)
 
         // TODO: selector暂时使用id代替
         self.chart = {

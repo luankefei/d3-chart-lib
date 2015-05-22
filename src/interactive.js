@@ -19,7 +19,7 @@ function interactive() {
 
         // TODO: 这里为了方便，后面要改成selector
         var id = dom.getAttribute('id')
-        var chart = Y.find('#' + id, Dom)
+        var chart = Y.find('#' + id, dom)
         
         var act = { 
 

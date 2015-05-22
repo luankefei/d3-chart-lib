@@ -17,9 +17,14 @@ var noop = function () {}       // 用于amd模块
 
 
 // 根据data/struct.js 初始化图表结构
-var initStruct = function(selector, node) {   
+var initStruct = function(selector, key) {   
 
-    var key = node.getAttribute('data-name')
+    // 判断第二个参数是否是domNode
+    if (key.nodeName !== undefined) {
+
+        key = node.getAttribute('data-name')
+
+    }
 
     chartMap[selector] = Y.struct[key]
 

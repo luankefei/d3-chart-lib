@@ -1,0 +1,41 @@
+{
+	"selector": "#bar",
+	"width": 1500,
+	"height": 300,
+	"paddingLeft": 200,
+	"paddingRight": 200,
+	"paddingTop": 10,
+	"paddingBottom": 10,
+	"dataset": [],
+	"colorset": [],
+	"title": {
+		"text": "fjsjfs",
+		"position": "center"
+	},
+	"legend": {
+		"selector": "#legend",
+		"width": 400,
+		"height": 100,
+		"style": "",
+		"data": []
+	},
+	"timeAxis": {
+		"selector": "#legend",
+		"width": 400,
+		"height": 100,
+		"style": "",
+		"data": []
+	},
+	"xAxis": {
+		"data": [],
+		"domain": [],
+		"rangeType": [],
+		"rangeValue": 0
+	},
+	"xAxis": {
+		"data": [],
+		"domain": [],
+		"rangeType": [],
+		"rangeValue": 0
+	}
+}

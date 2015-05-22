@@ -99,7 +99,7 @@ var Dom = {
             components.push(c)
         }
 
-        return components
+        return components.length === 0 ? null : components
     }   
 }
 
