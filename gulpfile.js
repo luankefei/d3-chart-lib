@@ -11,10 +11,27 @@ var karma = require('karma')
 var connect = require('gulp-connect')
 var livereload = require('gulp-livereload')
 
-// var amdOptimize = require('amd-optimize')
-// var concat = require('gulp-concat')
+// 路径配置
+var paths = {
 
-gulp.task('connect', function() {
+    scripts: [
+            'src/main.js',
+            'src/core.js',
+            'src/dom.js',
+            'src/http.js',
+            'src/chart.js',
+            'src/chart/lengthBar.js',
+            'src/interactive.js',
+            'src/component.js',
+            'src/component/axis.js',
+            'src/util.js',
+            'src/events.js',
+            'src/extend.js'
+            ],
+    images: ''
+}
+
+gulp.task('connect', ['minify'], function() {
 
     connect.server({
         root: '',
@@ -23,18 +40,18 @@ gulp.task('connect', function() {
 })
 
 // Lint JS
-gulp.task('lint', function() {
-    return gulp.src('src/*.js')
+gulp.task('lint', ['minify'], function() {
+    return gulp.src('dist/ycharts.js;')
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
 })
 
 // Concat & Minify JS
 gulp.task('minify', function() {
-    return gulp.src('src/*.js')
-        .pipe(concat('all.js'))
+    return gulp.src(paths.scripts)
+        .pipe(concat('ycharts.js'))
         .pipe(gulp.dest('dist'))
-        .pipe(rename('all.min.js'))
+        .pipe(rename('ycharts.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('dist'))
         .pipe(livereload())
@@ -50,11 +67,6 @@ gulp.task('script', function() {
     livereload.reload()
 })
 
-gulp.task('css', function() {
-
-    livereload.reload()  
-})
-
 // Watch Our Files
 gulp.task('watch', function() {
 
@@ -63,27 +75,16 @@ gulp.task('watch', function() {
     livereload.listen()
 
 
-    gulp.watch('src/*.html', ['html'], function(file) {
+    gulp.watch('*.html', ['html'], function(file) {
 
         server.changed(file.path)
 
         server.reload()
     })
 
-    gulp.watch('src/js/*.js', ['lint', 'minify', 'script'], function(file) {
+    gulp.watch('src/**', ['lint', 'minify', 'script'], function(file) {
         
         server.changed(file.path)
-    })
-
-    gulp.watch('src/js/*/*.js', ['lint', 'minify', 'script'], function(file) {
-        
-        server.changed(file.path)
-    })
-
-    gulp.watch('src/css/*.css', ['lint', 'minify', 'css'], function(file) {
-
-        server.changed(file.path)
-
     })
 })
 
@@ -107,5 +108,6 @@ gulp.task('karma', function() {
 
 // Default
 //gulp.task('default', ['lint', 'minify', 'watch', 'browser-sync'])
-gulp.task('default', ['lint', 'minify', 'watch', 'connect'])
+gulp.task('default', ['minify', 'watch', 'connect'])
+gulp.task('package', ['minify'])
 
