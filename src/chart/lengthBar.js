@@ -6,7 +6,7 @@
 
 function lengthBar(svg, data) {
 
-	this.data = data
+    this.data = data
     // this.width = null
     // this.height = null
     this.svg = svg
@@ -21,42 +21,47 @@ function lengthBar(svg, data) {
         svg.attr('version', '1.1')
         svg.attr('xmlns', 'http://www.w3.org/1999/svg')
 
-        svg.attr('width', that.width - that.paddingLeft - that.paddingRight)
-            .attr('height', that.height - that.paddingTop - that.paddingBottom)
+        svg.attr('width', that.width)
+            .attr('height', that.height)
 
         // TODO: magic number
-        var paddingLeft = that.paddingLeft, 
-            paddingBottom = that.paddingBottom
+        var paddingLeft = that.paddingLeft,
+            paddingBottom = that.paddingBottom,
+            paddingTop = that.paddingTop,
+            paddingRight = that.paddingRight
 
         var color = d3.scale.category10()
 
         // TODO: 上面可以封装成函数，用于计算每行数据的和
-        // TODO: 两侧的padding都是magic number    
-        var scale = d3.scale.linear()
-            .domain([0, d3.max(that.data)])
-            .range([0, that.height])
+        // TODO: 两侧的padding都是magic number
+        
+        var xScale = d3.scale.ordinal()
+            .domain(that.scale.x.data)
+            .rangeBands([0, that.width - that.paddingLeft - that.paddingRight], 0.1)
 
-        // 添加立柱
+        var yScale = d3.scale.linear()
+            .domain([0, d3.max(that.data)])
+            .range([0, that.height-that.paddingTop - that.paddingBottom])
+
         svg.append('g')
-            .attr('transform', 'translate(' + that.paddingLeft + ',' + that.paddingTop + ')')
+            .attr('transform', 'translate(' + paddingLeft + ',' + paddingTop + ')')
             .selectAll('rect')
             .data(that.data)
             .enter()
             .append('rect')
             .attr('class', 'bar')
-            .attr('width', 10)
+            .attr('width', xScale.rangeBand())
             .attr('height', function(d, i) {
-
-                return scale(d)
+                return yScale(d)
             })
             .attr('y', function(d, i) {
 
-                return that.height - scale(d) - paddingBottom
+                return that.height  - paddingBottom - paddingBottom- yScale(d)
                 //return screen.availHeight - paddingBottom
             })
             .attr('x', function(d, i) {
 
-                return (that.width - that.paddingLeft - that.paddingRight) / that.data.length * i
+                return xScale(that.scale.x.data[i])
             })
             .attr('fill', function(d, i) {
 

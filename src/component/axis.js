@@ -1,5 +1,3 @@
-
-
 /**
  * @name  axis.js
  * @description 数轴组件
@@ -27,7 +25,7 @@ Component.Axis = {
 
 				break
 
-			default: 
+			default:
 				break
 		}
 
@@ -38,8 +36,6 @@ Component.Axis = {
 
 		this.config = config
 
-		console.log(config)
-
 		var chart = chart['chart']
 		var axis = Component.Axis
 
@@ -48,22 +44,22 @@ Component.Axis = {
 			svg = obj.svg
 
 		var xScale = axis.scale('ordinal')
-				.domain(data)
-				.rangeBands([0, obj.width], 0.1)
+				.domain(obj.scale.x.data)
+				.rangeBands([0, obj.width - obj.paddingLeft - obj.paddingRight], 0.1)
 
-		axis.create('xAxis', xScale, d3.select(svg), data, 'bottom', [ obj.paddingLeft, obj.height - obj.paddingBottom ])
+		var yScale = d3.scale.linear()
+				.domain([0,d3.max(data)])
+			   	.range([obj.height - obj.paddingTop - obj.paddingBottom, 0])
 
-		// var yScale = d3.scale.linear()
-		// 			   .domain([0,d3.max(dataset)])
-		// 			   .range([height-margin.top-margin.bottom,0]);
-
+		axis.create('xAxis', xScale, d3.select(svg), obj.scale.x.data, 'bottom', [ obj.paddingLeft, obj.height - obj.paddingBottom ])
+		axis.create('yAxis', yScale, d3.select(svg), null, 'left', [ obj.paddingLeft, obj.paddingTop ])
 	},
 
 
 	// 原设计：create的时候生成一个svg当做容器，bind的时候再剪切到目标svg
 	// type, scale, svg, position, tickValues, transform
-	// 
-	// 
+	//
+	//
 	create: function(type, scale, svg, data, position, transform) {
 
 		var axis = d3.svg.axis()
@@ -81,7 +77,7 @@ Component.Axis = {
 		// svg.selectAll('.tick text').attr(this.textStyle)
 		// svg.selectAll('.xAxis path').attr(this.axisStyle)
 		// svg.selectAll('.yAxis path').attr(this.axisStyle)
-		// 
+		//
 		svg.selectAll('.xAxis line').style(this.config.x.lineStyle)
 		svg.selectAll('.xAxis text').style(this.config.x.textStyle)
 		svg.selectAll('.xAxis path').style(this.config.x.pathStyle)
@@ -112,11 +108,9 @@ Component.Axis = {
 	}
 }
 /**
- * 2015.5.18 
+ * 2015.5.18
  * 调整了组件结构，但尚不完善。oop可能更有表现力。
  * 增加了init函数，该函数将作为组件入口。负责获取绘图所需参数
  * 2015.5.22
  * 增加了对config的调用
  */
-
-
