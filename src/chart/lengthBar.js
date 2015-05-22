@@ -6,14 +6,14 @@
 
 function lengthBar(svg, data) {
 
-    this.data = data
-    // this.width = null
-    // this.height = null
+    // // this.width = null
+    // // this.height = null
     this.svg = svg
+    this.data = data
 
     var that = this
 
-    this.draw = function(self) {
+    this.draw = function() {
 
         var svgClientRect = that.svg.getBoundingClientRect()
         var svg = d3.select(that.svg)
@@ -33,8 +33,7 @@ function lengthBar(svg, data) {
         var color = d3.scale.category10()
 
         // TODO: 上面可以封装成函数，用于计算每行数据的和
-        // TODO: 两侧的padding都是magic number
-        
+        // TODO: 两侧的padding都是magic number   
         var xScale = d3.scale.ordinal()
             .domain(that.scale.x.data)
             .rangeBands([0, that.width - that.paddingLeft - that.paddingRight], 0.1)
@@ -44,6 +43,7 @@ function lengthBar(svg, data) {
             .range([0, that.height-that.paddingTop - that.paddingBottom])
 
         svg.append('g')
+            .attr('class', 'chart')
             .attr('transform', 'translate(' + paddingLeft + ',' + paddingTop + ')')
             .selectAll('rect')
             .data(that.data)
@@ -101,5 +101,5 @@ function lengthBar(svg, data) {
         //     .attr('class', 'text')
     }
 
-    return this
+    return that
 }

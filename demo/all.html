@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chart Demo</title>
+</head>
+<body>
+
+    <chart id="bar" data-name="lengthBar">
+        <data src="/demo/data/all-data.json"></data>
+        <config src="/demo/data/all-config.json"></config>
+        <component data-name="axis"></component>
+        <event data-name="mouseover" data-trigger="bar" data-type="highlight"></event>
+        <event data-name="mouseout" data-trigger="bar" data-type="resetHighlight"></event>
+    </chart>
+
+    <!-- start: a lot of dependencies -->
+    <script src="/lib/d3.v3.min.js"></script>
+    <!-- end: dependencies -->
+
+    <script src="/dist/ycharts.js"></script>
+    <script src="/data/struct.js"></script>
+    <script>
+
+    var dom = document.getElementById('bar')
+
+    Y.init(dom)
+
+    // 以下为用户自定事件代码
+    var chart = Y.find('#bar', dom)
+
+    
+    var handler = {
+        part: 'bar',
+        name: 'click',
+        type: 'custom',
+        func: function(e) {
+
+            Y.changeData(chart, [Math.random(), Math.random(), Math.random(), Math.random(), Math.random()])
+            e.target.style.fill = 'red'
+        }
+    }
+
+    // target, handler
+    Y.addEvent(chart, handler)
+
+    </script>
+
+</body>
+</html>

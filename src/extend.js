@@ -8,6 +8,7 @@
 Y.extend({
 
     init: Core.init,
+    changeData: Core.changeData,
     getScript: Http.getScript,
     getJson: Http.getJson,
     bindEvent: Interactive.bindEvent

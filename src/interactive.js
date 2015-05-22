@@ -7,7 +7,6 @@
  * @dete 2015.04.28
  * @version  0.0.1
  */
-
 function interactive() {
 
     this.trigger = null
@@ -21,27 +20,18 @@ function interactive() {
         var id = dom.getAttribute('id')
         var chart = Y.find('#' + id, dom)
         
-        var act = { 
-
-            trigger: this.trigger,
-            name: this.name,
-            type: this.type,
-            target: this.target
-        } 
-
         // TODO: 这里代码太乱
-
         // 如果图表下面的trigger对象不存在，直接注册
-        if (typeof chart['part'][act.trigger] === 'undefined') {
-            chart['part'][act.trigger] = []
+        if (typeof chart['part'][this.trigger] === 'undefined') {
+            chart['part'][this.trigger] = []
         }
 
         // 将事件声明到trigger对象内
-        chart['part'][act.trigger].push({
+        chart['part'][this.trigger].push({
 
-            name: act.name,
-            target: act.target,
-            func: act.type
+            name: this.name,
+            target: this.target,
+            func: this.type
         })
 
         // 取消了事件绑定，bind函数只用来声明事件

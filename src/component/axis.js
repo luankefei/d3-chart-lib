@@ -39,6 +39,7 @@ Component.Axis = {
 		var chart = chart['chart']
 		var axis = Component.Axis
 
+		// TODO: self.chart.data在这里被使用了
 		var data = chart.data,
 			obj = chart.obj,
 			svg = obj.svg

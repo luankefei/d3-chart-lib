@@ -18,8 +18,7 @@ Component.init = function(components, data, selector, config) {
 
         var name = components[i]['name']
 
-
-         // TODO: 首字母大写，似乎是hack，应该可以在config里约定
+        // TODO: 首字母大写，似乎是hack，应该可以在config里约定
         var key = name[0].toUpperCase() + name.substring(1)
 
         var cop = Component[key]

@@ -37,6 +37,24 @@ var Core = {
         
             })
         })
+    },
+
+    changeData: function(chart, data) {
+     
+        var chartNode = chart.chart.obj.svg.getElementsByClassName('chart')[0]
+
+        chartNode.parentNode.removeChild(chartNode)
+
+        Y.getJson('/demo/data/all-config.json', function(config) {
+
+            Chart.draw(chart.chart.name, chart.chart.obj.svg, data, config)
+
+        })
+        // 绘图结束时会绑定事件，所以事件不用重写
+        //Chart.draw(chart.chart.name, chart.chart.obj.svg, data, chart.chart.obj)
+
+        // 初始化组件
+        //Component.init(components, data, selector, config)
     }
 }
 

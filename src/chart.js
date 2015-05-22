@@ -8,25 +8,30 @@ var Chart = {
 
     draw: function(name, svg, data, config) {
 
+        // TODO: 这里传入了data，导致下面的self.chart.data无效
         var c = eval('new ' + name + '(svg, data)')
+
         // TODO: selector将作为chartMap中的key值，暂时使用用户定义的id
         var id = svg.getAttribute('id')
         var self = Y.find('#' + id, name)
 
         // TODO: selector暂时使用id代替
+        // TODO: self.chart.data在这里被使用了
         self.chart = {
             selector: id,
             name: name,
             obj: c,
-            data: data,
+            data: data
         }
 
         // 将所有config绑定到图表对象上
         for (var k in config) {
-
-            c[k] = config[k]
+    
+            if (k != 'data') {
+                c[k] = config[k]
+            }
         }
-
+      
         c.draw()
 
         // 绑定事件
