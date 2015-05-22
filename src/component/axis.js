@@ -32,28 +32,25 @@ Component.Axis = {
 		return obj
 	},
 
-	init: function(chart, config) {
+	init: function(chart) {
 
-		this.config = config
-
-		var chart = chart['chart']
+		// TODO: 不优雅的设计，重写config
+		var config = chart.config
 		var axis = Component.Axis
 
-		// TODO: self.chart.data在这里被使用了
 		var data = chart.data,
-			obj = chart.obj,
-			svg = obj.svg
+			svg = chart.svg
 
 		var xScale = axis.scale('ordinal')
-				.domain(obj.scale.x.data)
-				.rangeBands([0, obj.width - obj.paddingLeft - obj.paddingRight], 0.1)
+				.domain(config.scale.x.data)
+				.rangeBands([0, config.width - config.paddingLeft - config.paddingRight], 0.1)
 
 		var yScale = d3.scale.linear()
 				.domain([0,d3.max(data)])
-			   	.range([obj.height - obj.paddingTop - obj.paddingBottom, 0])
+			   	.range([config.height - config.paddingTop - config.paddingBottom, 0])
 
-		axis.create('xAxis', xScale, d3.select(svg), obj.scale.x.data, 'bottom', [ obj.paddingLeft, obj.height - obj.paddingBottom ])
-		axis.create('yAxis', yScale, d3.select(svg), null, 'left', [ obj.paddingLeft, obj.paddingTop ])
+		axis.create('xAxis', xScale, d3.select(svg), config.scale.x.data, 'bottom', [ config.paddingLeft, config.height - config.paddingBottom ], config)
+		axis.create('yAxis', yScale, d3.select(svg), null, 'left', [ config.paddingLeft, config.paddingTop ], config)
 	},
 
 
@@ -61,7 +58,9 @@ Component.Axis = {
 	// type, scale, svg, position, tickValues, transform
 	//
 	//
-	create: function(type, scale, svg, data, position, transform) {
+	create: function(type, scale, svg, data, position, transform, config) {
+
+		config = config.axis
 
 		var axis = d3.svg.axis()
 			.scale(scale)
@@ -69,23 +68,17 @@ Component.Axis = {
 			.tickValues(data)
 
 		svg.append('g')
-			.attr('class', type)
+			.attr('class', type + ' component')
 			.attr('transform', 'translate(' + transform[0] + ',' + transform[1] + ')')
 			.call(axis)
 
-		// TODO: 组件库最好不要整合css
-		// svg.selectAll('.tick line').attr(this.axisStyle)
-		// svg.selectAll('.tick text').attr(this.textStyle)
-		// svg.selectAll('.xAxis path').attr(this.axisStyle)
-		// svg.selectAll('.yAxis path').attr(this.axisStyle)
-		//
-		svg.selectAll('.xAxis line').style(this.config.x.lineStyle)
-		svg.selectAll('.xAxis text').style(this.config.x.textStyle)
-		svg.selectAll('.xAxis path').style(this.config.x.pathStyle)
+		svg.selectAll('.xAxis line').style(config.x.lineStyle)
+		svg.selectAll('.xAxis text').style(config.x.textStyle)
+		svg.selectAll('.xAxis path').style(config.x.pathStyle)
 
-		svg.selectAll('.yAxis line').style(this.config.x.lineStyle)
-		svg.selectAll('.yAxis text').style(this.config.x.textStyle)
-		svg.selectAll('.yAxis path').style(this.config.x.pathStyle)
+		svg.selectAll('.yAxis line').style(config.y.lineStyle)
+		svg.selectAll('.yAxis text').style(config.y.textStyle)
+		svg.selectAll('.yAxis path').style(config.y.pathStyle)
 
 	},
 
@@ -114,4 +107,5 @@ Component.Axis = {
  * 增加了init函数，该函数将作为组件入口。负责获取绘图所需参数
  * 2015.5.22
  * 增加了对config的调用
+ * 移除了init的第二个参数 
  */

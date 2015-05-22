@@ -15,23 +15,22 @@ var Chart = {
         var id = svg.getAttribute('id')
         var self = Y.find('#' + id, name)
 
+        self.config = c.config = config
+        self.svg = svg
+        self.data = data
+        self.name = name
         // TODO: selector暂时使用id代替
-        // TODO: self.chart.data在这里被使用了
-        self.chart = {
-            selector: id,
-            name: name,
-            obj: c,
-            data: data
-        }
+        self.selector = '#' + id
 
         // 将所有config绑定到图表对象上
-        for (var k in config) {
+        // for (var k in config) {
     
-            if (k != 'data') {
-                c[k] = config[k]
-            }
-        }
+        //     if (k != 'data') {
+        //         c[k] = config[k]
+        //     }
+        // }
       
+        console.log('chart find')
         c.draw()
 
         // 绑定事件

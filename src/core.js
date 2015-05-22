@@ -33,28 +33,31 @@ var Core = {
                 Chart.draw(name, svg, data, config)
 
                 // 初始化组件
-                Component.init(components, data, selector, config)
+                Component.init(components, data, selector)
         
             })
         })
     },
 
     changeData: function(chart, data) {
-     
-        var chartNode = chart.chart.obj.svg.getElementsByClassName('chart')[0]
+        
+        // TODO: 清除的逻辑应该单独提出
+        var chartNode = chart.svg.getElementsByClassName('chart')[0]
 
         chartNode.parentNode.removeChild(chartNode)
 
-        Y.getJson('/demo/data/all-config.json', function(config) {
+        var copNode = chart.svg.querySelectorAll('.component')
 
-            Chart.draw(chart.chart.name, chart.chart.obj.svg, data, config)
+        for (var i = 0; i < copNode.length; i++) {
 
-        })
+            chart.svg.removeChild(copNode[i])
+        }
+
         // 绘图结束时会绑定事件，所以事件不用重写
-        //Chart.draw(chart.chart.name, chart.chart.obj.svg, data, chart.chart.obj)
+        Chart.draw(chart.name, chart.svg, data, chart.config)
 
         // 初始化组件
-        //Component.init(components, data, selector, config)
+        Component.init(chart.components, data, chart.selector)
     }
 }
 
@@ -66,4 +69,5 @@ var Core = {
  * 更新了对Dom模块事件接口的调用函数
  * 增加了对event和component两个可选参数的存在验证，但代码风格糟糕，需要改进
  * 移除了存在验证
+ * 增加了changeData方法
  */

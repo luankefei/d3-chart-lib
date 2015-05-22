@@ -7,7 +7,7 @@
  */
 
 var version = 1                 // 版本号
-var chartMap = []               // 用于关联selector与图表对象
+var chartMap = {}               // 用于关联selector与图表对象
 
 var moduleMap = {}              // 用于amd模块
 var fileMap = {}                // 用于amd模块
@@ -54,6 +54,8 @@ Y.extend({
     find: function(selector, node) {
 
         var c = chartMap[selector]
+
+        console.log(c)
 
         if (typeof c === 'undefined') {
 

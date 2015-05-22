@@ -16,6 +16,7 @@ function interactive() {
 
     this.bind = function(dom) {
 
+        console.log('interactive bind')
         // TODO: 这里为了方便，后面要改成selector
         var id = dom.getAttribute('id')
         var chart = Y.find('#' + id, dom)
@@ -88,7 +89,7 @@ var Interactive = {
             var part = partNames[i]
             // TODO: 可优化，在绘图时将dom对象进行保存
             // TODO: 这里通过id获取，以后替换成selector
-            var selector = '#' + chart['chart']['selector'] + ' .' + part
+            var selector = chart['selector'] + ' .' + part
             var eventList = parts[partNames[i]]
 
             for (var j = 0; j < eventList.length; j++) {

@@ -10,10 +10,13 @@ function lengthBar(svg, data) {
     // // this.height = null
     this.svg = svg
     this.data = data
+    this.config = null
 
     var that = this
 
     this.draw = function() {
+
+        var config = that.config
 
         var svgClientRect = that.svg.getBoundingClientRect()
         var svg = d3.select(that.svg)
@@ -21,26 +24,26 @@ function lengthBar(svg, data) {
         svg.attr('version', '1.1')
         svg.attr('xmlns', 'http://www.w3.org/1999/svg')
 
-        svg.attr('width', that.width)
-            .attr('height', that.height)
+        svg.attr('width', config.width)
+            .attr('height', config.height)
 
         // TODO: magic number
-        var paddingLeft = that.paddingLeft,
-            paddingBottom = that.paddingBottom,
-            paddingTop = that.paddingTop,
-            paddingRight = that.paddingRight
+        var paddingLeft = config.paddingLeft,
+            paddingBottom = config.paddingBottom,
+            paddingTop = config.paddingTop,
+            paddingRight = config.paddingRight
 
         var color = d3.scale.category10()
 
         // TODO: 上面可以封装成函数，用于计算每行数据的和
         // TODO: 两侧的padding都是magic number   
         var xScale = d3.scale.ordinal()
-            .domain(that.scale.x.data)
-            .rangeBands([0, that.width - that.paddingLeft - that.paddingRight], 0.1)
+            .domain(config.scale.x.data)
+            .rangeBands([0, config.width - config.paddingLeft - config.paddingRight], 0.1)
 
         var yScale = d3.scale.linear()
             .domain([0, d3.max(that.data)])
-            .range([0, that.height-that.paddingTop - that.paddingBottom])
+            .range([0, config.height - config.paddingTop - config.paddingBottom])
 
         svg.append('g')
             .attr('class', 'chart')
@@ -56,12 +59,12 @@ function lengthBar(svg, data) {
             })
             .attr('y', function(d, i) {
 
-                return that.height  - paddingBottom - paddingBottom- yScale(d)
+                return config.height  - paddingBottom - paddingBottom- yScale(d)
                 //return screen.availHeight - paddingBottom
             })
             .attr('x', function(d, i) {
 
-                return xScale(that.scale.x.data[i])
+                return xScale(config.scale.x.data[i])
             })
             .attr('fill', function(d, i) {
 

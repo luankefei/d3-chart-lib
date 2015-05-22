@@ -6,7 +6,7 @@
 
 var Component = {}
 
-Component.init = function(components, data, selector, config) {
+Component.init = function(components, data, selector) {
 
     if (components === null || components === undefined) {
 
@@ -22,9 +22,13 @@ Component.init = function(components, data, selector, config) {
         var key = name[0].toUpperCase() + name.substring(1)
 
         var cop = Component[key]
+
         var chart = Y.find(selector)
 
-        cop.init(chart, config[name])
+        // TODO: 将components保存到chart，便于重绘时使用
+        chart.components = components
+
+        cop.init(chart)
 
     }
 }
