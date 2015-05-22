@@ -21,7 +21,7 @@ var Core = {
 
             var svg = Dom.replaceDom(node)
             var name = node.getAttribute('data-name')
-            var act = Dom.getInteractive(node)
+            var act = Dom.getEvent(node)
             var components = Dom.getComponent(node)
 
             // 加载config文件，进行绘图
@@ -52,4 +52,6 @@ var Core = {
  * 2015.5.18
  * 增加了组件的初始化流程，但未完成
  * 绘图接口增加了新的参数config，作用是替代css。config是异步获取，所以增加了回调嵌套
+ * 2015.5.22
+ * 更新了对Dom模块事件接口的调用函数
  */

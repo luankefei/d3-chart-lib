@@ -62,10 +62,10 @@ var Dom = {
     },
 
     // 获取默认交互事件
-    getInteractive: function(node) {
+    getEvent: function(node) {
 
         // TODO: 事件可能有多个
-        var nodeAct = node.getElementsByTagName('interactive')[0]
+        var nodeAct = node.getElementsByTagName('event')[0]
         var act = {}
 
         if (typeof nodeAct === 'undefined') {
@@ -108,4 +108,6 @@ var Dom = {
  * 增加了getComponent函数，该函数用来解析组件标签
  * 修改了getInteractive函数，但未完成，该函数应该可以处理多个事件
  * 增加了getConfig函数，该函数用来解析图表样式
+ * 2015.5.22
+ * 重命名 getInteractive - > getEvent
  */
