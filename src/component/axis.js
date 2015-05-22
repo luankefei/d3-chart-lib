@@ -8,6 +8,7 @@
 
 Component.Axis = {
 
+	config: null,
 	//self: Component.Axis,
 
 	scale: function(type) {
@@ -33,7 +34,9 @@ Component.Axis = {
 		return obj
 	},
 
-	init: function(chart) {
+	init: function(chart, config) {
+
+		this.config = config
 
 		var chart = chart['chart']
 		var axis = Component.Axis
@@ -41,8 +44,6 @@ Component.Axis = {
 		var data = chart.data,
 			obj = chart.obj,
 			svg = obj.svg
-
-		console.log(self)
 
 		var xScale = axis.scale('ordinal')
 				.domain(data)
@@ -74,10 +75,19 @@ Component.Axis = {
 			.call(axis)
 
 		// TODO: 组件库最好不要整合css
-		svg.selectAll('.tick line').attr(this.axisStyle)
-		svg.selectAll('.tick text').attr(this.textStyle)
-		svg.selectAll('.xAxis path').attr(this.axisStyle)
-		svg.selectAll('.yAxis path').attr(this.axisStyle)
+		// svg.selectAll('.tick line').attr(this.axisStyle)
+		// svg.selectAll('.tick text').attr(this.textStyle)
+		// svg.selectAll('.xAxis path').attr(this.axisStyle)
+		// svg.selectAll('.yAxis path').attr(this.axisStyle)
+		// 
+		svg.selectAll('.xAxis line').style(this.config.x.lineStyle)
+		svg.selectAll('.xAxis text').style(this.config.x.textStyle)
+		svg.selectAll('.xAxis path').style(this.config.x.pathStyle)
+
+		svg.selectAll('.yAxis line').style(this.config.x.lineStyle)
+		svg.selectAll('.yAxis text').style(this.config.x.textStyle)
+		svg.selectAll('.yAxis path').style(this.config.x.pathStyle)
+
 	},
 
 	bind: function() {
@@ -103,6 +113,8 @@ Component.Axis = {
  * 2015.5.18 
  * 调整了组件结构，但尚不完善。oop可能更有表现力。
  * 增加了init函数，该函数将作为组件入口。负责获取绘图所需参数
+ * 2015.5.22
+ * 增加了对config的调用
  */
 
 

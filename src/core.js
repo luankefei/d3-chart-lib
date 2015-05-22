@@ -6,11 +6,6 @@
  */
 
 
-// var dom = Y.use('dom')
-// var chart = Y.use('chart')
-// var interactive = Y.use('interactive')
-// var component = Y.use('component')
-
 var Core = {
 
     // 后面两个是可选参数，如果replace是true，会在svg中生成一个g节点
@@ -48,12 +43,12 @@ var Core = {
 
                     // 初始化组件
                     // TODO: 这里只对组件1进行处理，如要修改，请保持此处的单行代码风格
-                    components[0] = Component.init(components[0], data, selector)
+                    components[0] = Component.init(components[0], data, selector, config)
         
-                }   // end if
+                }
             })
         })
-    }   // end function -> init
+    }
 }
 
 /**

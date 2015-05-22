@@ -23,21 +23,29 @@ var Http = {
 
     getJson: function(url, callback) {
 
-        var req = new XMLHttpRequest()
+        try {
 
-        req.open('GET', url)
-        req.onreadystatechange = function() {
+            var req = new XMLHttpRequest()
 
-            if (req.status == 200 && req.readyState == 4) {
+            req.open('GET', url)
+            req.onreadystatechange = function() {
 
-                var data = JSON.parse(req.responseText)
+                if (req.status == 200 && req.readyState == 4) {
 
-                callback && callback(data)
+                    var data = JSON.parse(req.responseText)
+
+                    callback && callback(data)
+                }
             }
-        }
 
-        req.setRequestHeader('Content-Type', 'application/json')
-        req.send(null)
+            req.setRequestHeader('Content-Type', 'application/json')
+            req.send(null)
+
+        } catch(e) {
+
+            console.error(e)
+            console.log('请检查json格式')
+        }
     },
 
     loadResource: function(url, callback) {

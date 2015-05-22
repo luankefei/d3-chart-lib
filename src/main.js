@@ -22,7 +22,7 @@ var initStruct = function(selector, key) {
     // 判断第二个参数是否是domNode
     if (key.nodeName !== undefined) {
 
-        key = node.getAttribute('data-name')
+        key = key.getAttribute('data-name')
 
     }
 
