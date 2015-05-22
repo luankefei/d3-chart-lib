@@ -38,6 +38,8 @@ Component.Axis = {
 
 		this.config = config
 
+		console.log(config)
+
 		var chart = chart['chart']
 		var axis = Component.Axis
 
@@ -49,7 +51,7 @@ Component.Axis = {
 				.domain(data)
 				.rangeBands([0, obj.width], 0.1)
 
-		axis.create('xAxis', xScale, d3.select(svg), data, [1, 1], [1, 1])
+		axis.create('xAxis', xScale, d3.select(svg), data, 'bottom', [ obj.paddingLeft, obj.height - obj.paddingBottom ])
 
 		// var yScale = d3.scale.linear()
 		// 			   .domain([0,d3.max(dataset)])

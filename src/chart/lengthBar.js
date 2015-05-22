@@ -7,8 +7,8 @@
 function lengthBar(svg, data) {
 
 	this.data = data
-    this.width = null
-    this.height = null
+    // this.width = null
+    // this.height = null
     this.svg = svg
 
     var that = this
@@ -21,12 +21,12 @@ function lengthBar(svg, data) {
         svg.attr('version', '1.1')
         svg.attr('xmlns', 'http://www.w3.org/1999/svg')
 
-        svg.attr('width', that.width)
-            .attr('height', that.height)
+        svg.attr('width', that.width - that.paddingLeft - that.paddingRight)
+            .attr('height', that.height - that.paddingTop - that.paddingBottom)
 
         // TODO: magic number
-        var paddingLeft = this.paddingLeft, 
-            paddingBottom = this.paddingBottom
+        var paddingLeft = that.paddingLeft, 
+            paddingBottom = that.paddingBottom
 
         var color = d3.scale.category10()
 
@@ -34,10 +34,12 @@ function lengthBar(svg, data) {
         // TODO: 两侧的padding都是magic number    
         var scale = d3.scale.linear()
             .domain([0, d3.max(that.data)])
-            .range([0, 70])
+            .range([0, that.height])
 
         // 添加立柱
-        svg.selectAll('rect')
+        svg.append('g')
+            .attr('transform', 'translate(' + that.paddingLeft + ',' + that.paddingTop + ')')
+            .selectAll('rect')
             .data(that.data)
             .enter()
             .append('rect')
@@ -49,12 +51,12 @@ function lengthBar(svg, data) {
             })
             .attr('y', function(d, i) {
 
-                return svgClientRect.height - scale(d) - paddingBottom
+                return that.height - scale(d) - paddingBottom
                 //return screen.availHeight - paddingBottom
             })
             .attr('x', function(d, i) {
 
-                return that.width / that.data.length * i
+                return (that.width - that.paddingLeft - that.paddingRight) / that.data.length * i
             })
             .attr('fill', function(d, i) {
 
