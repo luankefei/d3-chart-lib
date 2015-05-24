@@ -29,8 +29,8 @@ var Chart = {
         //         c[k] = config[k]
         //     }
         // }
-      
-        console.log('chart find')
+
+
         c.draw()
 
         // 绑定事件

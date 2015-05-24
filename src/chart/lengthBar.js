@@ -6,8 +6,6 @@
 
 function lengthBar(svg, data) {
 
-    // // this.width = null
-    // // this.height = null
     this.svg = svg
     this.data = data
     this.config = null
@@ -106,3 +104,9 @@ function lengthBar(svg, data) {
 
     return that
 }
+
+/**
+ * 2015.5.22
+ * 增加了y轴比例尺
+ * 样式从config中读取
+ */

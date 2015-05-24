@@ -29,7 +29,6 @@
     // 以下为用户自定事件代码
     var chart = Y.find('#bar', dom)
 
-    
     var handler = {
         part: 'bar',
         name: 'click',
@@ -40,10 +39,6 @@
             e.target.style.fill = 'red'
         }
     }
-
-    // setTimeout(function() {
-    //     Y.changeData(chart, [Math.random(), Math.random(), Math.random(), Math.random(), Math.random()])
-    // }, 1000)
 
     // target, handler
     Y.addEvent(chart, handler)

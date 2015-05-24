@@ -73,7 +73,7 @@
       "rangeType": [],
       "rangeValue": 0,
       "lineStyle": {
-        "fill": "#ccc",
+        "fill": "none",
         "stroke": "#999",
         "stroke-width": "1px"
       },
@@ -85,7 +85,7 @@
         "transform": "rotate(0,0,0)"
       },
       "pathStyle": {
-        "fill": "#ccc",
+        "fill": "none",
         "stroke": "#999",
         "stroke-width": "1px"
       }
