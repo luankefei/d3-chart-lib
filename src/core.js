@@ -40,20 +40,11 @@ var Core = {
     },
 
     changeData: function(chart, data) {
+
+		// TODO: 清除的逻辑应该单独提出
+		Dom.clearSVG(chart.svg)		
         
-        // TODO: 清除的逻辑应该单独提出
-        var chartNode = chart.svg.getElementsByClassName('chart')[0]
-
-        chartNode.parentNode.removeChild(chartNode)
-
-        var copNode = chart.svg.querySelectorAll('.component')
-
-        for (var i = 0; i < copNode.length; i++) {
-
-            chart.svg.removeChild(copNode[i])
-        }
-
-        // 绘图结束时会绑定事件，所以事件不用重写
+		// 绘图结束时会绑定事件，所以事件不用重写
         Chart.draw(chart.name, chart.svg, data, chart.config)
 
         // 初始化组件
@@ -70,4 +61,6 @@ var Core = {
  * 增加了对event和component两个可选参数的存在验证，但代码风格糟糕，需要改进
  * 移除了存在验证
  * 增加了changeData方法
+ * 2015.5.25
+ * 将changeData中重置dom的代码移动到了Dom模块
  */

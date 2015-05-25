@@ -2,11 +2,11 @@
   "selector": "#bar",
   "type": "bar",
   "width": 1000,
-  "height": 300,
+  "height": 500,
   "paddingLeft": 200,
   "paddingRight": 200,
-  "paddingTop": 10,
-  "paddingBottom": 10,
+  "paddingTop": 30,
+  "paddingBottom": 30,
   "colorset": [],
   "title": {
     "text": "fjsjfs",
@@ -85,7 +85,7 @@
         "transform": "rotate(0,0,0)"
       },
       "pathStyle": {
-        "fill": "#ccc",
+        "fill": "none",
         "stroke": "#999",
         "stroke-width": "1px"
       }

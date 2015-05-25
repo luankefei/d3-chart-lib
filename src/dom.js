@@ -8,6 +8,20 @@
 
 var Dom = {
 
+	clearSVG: function(svg) {
+	
+        var chartNode = svg.getElementsByClassName('chart')[0]
+
+        chartNode.parentNode.removeChild(chartNode)
+
+        var copNode = svg.querySelectorAll('.component')
+
+        for (var i = 0; i < copNode.length; i++) {
+
+            svg.removeChild(copNode[i])
+        }
+	},
+
     replaceDom: function(node) {
 
         var id = node.getAttribute('id'),
@@ -111,4 +125,6 @@ var Dom = {
  * 2015.5.22
  * 重命名 getInteractive - > getEvent
  * 修改了getEvent和getComponent函数，添加多标签支持
+ * 2015.5.25
+ * 增加了clearSVG函数，该函数暂时只用于重绘时的重置操作
  */

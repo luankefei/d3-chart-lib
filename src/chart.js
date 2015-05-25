@@ -22,15 +22,6 @@ var Chart = {
         // TODO: selector暂时使用id代替
         self.selector = '#' + id
 
-        // 将所有config绑定到图表对象上
-        // for (var k in config) {
-    
-        //     if (k != 'data') {
-        //         c[k] = config[k]
-        //     }
-        // }
-
-
         c.draw()
 
         // 绑定事件

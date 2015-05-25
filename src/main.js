@@ -14,8 +14,6 @@ var fileMap = {}                // 用于amd模块
 
 var noop = function () {}       // 用于amd模块
 
-
-
 // 根据data/struct.js 初始化图表结构
 var initStruct = function(selector, key) {   
 
@@ -23,7 +21,6 @@ var initStruct = function(selector, key) {
     if (key.nodeName !== undefined) {
 
         key = key.getAttribute('data-name')
-
     }
 
     chartMap[selector] = Y.struct[key]
@@ -54,8 +51,6 @@ Y.extend({
     find: function(selector, node) {
 
         var c = chartMap[selector]
-
-        console.log(c)
 
         if (typeof c === 'undefined') {
 

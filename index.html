@@ -2,32 +2,72 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Chart Demo</title>
+	<title>Chart Demo</title>
+
+	<style>
+
+	* { margin: 0; padding: 0; }
+
+	body { font-size: 16px; }
+
+	header {
+		background: #FE6E6E;
+		color: #fff;
+
+		height: 100px;
+		line-height: 100px;
+
+		font-size:20px;
+	}
+
+	header, nav, dl {
+		padding-left: 60px;
+	}	
+	
+	nav {
+		margin: 50px 0;
+	}
+
+	div > dl > dt {
+		margin-bottom: 20px;
+	}
+
+	li, dd {
+		line-height: 20px;	
+	}	
+	
+	
+	</style>
 </head>
 <body>
+	<header>YCharts 图表组件</header>
+	<nav>
+		<ul>
+			<li><a href="https://github.com/luankefei/chart-lib-master">github </a></li>
+			<li><a href="https://github.com/luankefei/chart-lib-master/blob/master/README.md">documentation</a></li>
+		</ul>
+	</nav>
+	<div>
+		<dl>
+			<dt>demos</dt>
+			<dd>
+				<a href="demo/draw.html">基本绘图</a>
+			</dd>
+			<dd>
+				<a href="demo/style.html">修改config来改变图形样式</a>
+			</dd>
+			<dd>
+				<a href="demo/event.html">默认事件绑定</a>
+			</dd>
+			<dd>
+				<a href="demo/all.html">事件扩展</a>
+			</dd>
+		</dl>
+	</div>
 
-    <chart id="bar" data-name="lengthBar">
-        <data>[13, 10, 5, 20, 35]</data>
-        <config src="/data/config.json"></config>
-        <event data-name="mouseover" data-trigger="bar" data-type="highlight"></event>
-        <event data-name="mouseout" data-trigger="bar" data-type="resetHighlight"></event>
-        <component data-name="axis"></component>
-    </chart>
 
-    <!-- start: a lot of dependencies -->
-    <script src="/lib/d3.v3.min.js"></script>
-    <!-- end: dependencies -->
-    
 
-    <script src="/dist/ycharts.js"></script>
-    <script src="/data/struct.js"></script>
-    <script>
-    
-    var dom = document.getElementById('bar')
 
-    // dom, replace, target
-    Y.init(dom)
 
-    </script>
 </body>
 </html>
