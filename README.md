@@ -6,20 +6,20 @@
 
 ##阅读顺序
 
-main.js -> core.js -> dom.js -> http.js -> chart.js -> interactive.js -> events
+main.js -> core.js -> dom.js -> http.js -> chart.js -> interactive.js -> events.js
 
 component.js -> util.js -> extend.js
 
 
 ##模块概要
 
-main模块负责声明命名空间，提供一个基础的amd加载模块。
+main是组件库的种子模块，定义了命名空间和find函数
 
-core提供组件库的核心接口，如init
+core提供组件库的核心接口，如init、changeData
 
 dom模块负责解析页面的chart标签及子标签
 
-http模块负责加载
+http模块负责ajax等请求
 
 chart是整个图表的基类，作为绘图入口
 
@@ -33,17 +33,21 @@ extend负责暴露api到组件对象
 
 ##绘图组件
 
-axis坐标轴
+axis 坐标轴
 
-grid网格
+grid 网格
 
-legend图例
+legend 图例
 
-timeline时间轴
+timeline 时间轴
 
-title标题
+title 标题
 
-tooltip提示气泡
+tooltip 提示气泡
+
+mask 蒙版
+
+scale 比例尺
 
 ##关于组件库的设计
 
@@ -136,11 +140,11 @@ Y.addEvent(chart, handler)
 
 五、扩展
 
-1.增加图表。将js文件放置在src/js/chart下即可
+1.增加图表。将js文件放置在src/chart下即可
 
-2.增加组件。将js文件放置在src/js/component下即可
+2.增加组件。将js文件放置在src/component下即可
 
-3.增加事件。将代码添加到src/js/events即可
+3.增加事件。将代码添加到src/events即可
 
 六、与图易的结合
 
