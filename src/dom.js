@@ -8,8 +8,8 @@
 
 var Dom = {
 
-	clearSVG: function(svg) {
-	
+    clearSVG: function(svg) {
+    
         var chartNode = svg.getElementsByClassName('chart')[0]
 
         chartNode.parentNode.removeChild(chartNode)
@@ -20,7 +20,7 @@ var Dom = {
 
             svg.removeChild(copNode[i])
         }
-	},
+    },
 
     replaceDom: function(node) {
 

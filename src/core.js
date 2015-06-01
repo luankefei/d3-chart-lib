@@ -41,10 +41,10 @@ var Core = {
 
     changeData: function(chart, data) {
 
-		// TODO: 清除的逻辑应该单独提出
-		Dom.clearSVG(chart.svg)		
+        // TODO: 清除的逻辑应该单独提出
+        Dom.clearSVG(chart.svg)     
         
-		// 绘图结束时会绑定事件，所以事件不用重写
+        // 绘图结束时会绑定事件，所以事件不用重写
         Chart.draw(chart.name, chart.svg, data, chart.config)
 
         // 初始化组件
