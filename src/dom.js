@@ -1,5 +1,4 @@
 
-
 /**
  * dom模块负责解析html代码
  * @name dom.js
