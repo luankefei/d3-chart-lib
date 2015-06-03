@@ -26,3 +26,61 @@ Util.getColors = function(colors, number) {
 
     return colors.concat(colorset)
 }
+Util.clone = function (obj) {
+
+    var newObj
+
+
+    switch (typeof obj ) {
+
+        case 'undefined':
+
+            break
+
+        case 'string':
+        case 'boolean':
+        case 'number':
+        case 'function':
+
+            newObj = obj
+            break
+
+        case 'object':
+
+            if (obj === null) {
+
+                newObj = obj = null
+
+            } else if (Array.isArray(obj)) {
+
+                newObj = []
+
+                for (var i = 0 ; i < obj.length; i++) {
+
+                    newObj.push(Util.clone(obj[i]))
+
+                }
+
+            } else {
+
+                newObj = {}
+
+                for (var key in obj) {
+
+                    newObj[key] = Util.clone(obj[key])
+
+                }
+            }
+
+        break
+
+        default:
+
+            newObj = obj
+
+        break
+    }
+
+    return newObj
+
+}
